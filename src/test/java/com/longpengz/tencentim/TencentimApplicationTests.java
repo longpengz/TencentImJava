@@ -1,11 +1,10 @@
 package com.longpengz.tencentim;
 
-import com.longpengz.tencentim.account.AccountService;
-import com.longpengz.tencentim.account.AccountServiceImp;
+import com.longpengz.tencentim.service.account.AccountService;
+import com.longpengz.tencentim.service.account.AccountServiceImp;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import com.longpengz.tencentim.config.ImConfig;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Random;
 

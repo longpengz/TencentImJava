@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.account.modle;
+package com.longpengz.tencentim.service.account.modle;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
 import io.swagger.annotations.ApiModel;

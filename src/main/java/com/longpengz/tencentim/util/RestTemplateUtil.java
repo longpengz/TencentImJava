@@ -1,6 +1,5 @@
 package com.longpengz.tencentim.util;
 
-import com.longpengz.tencentim.account.modle.ImAccountImportRequest;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
