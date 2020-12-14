@@ -4,12 +4,12 @@ import com.longpengz.tencentim.bean.response.ImResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "IM查询账号在线状态返回参数")
