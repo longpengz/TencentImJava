@@ -4,7 +4,8 @@ import com.google.gson.Gson;
 import com.longpengz.tencentim.service.account.modle.*;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.util.RestTemplateUtil;
+import com.longpengz.tencentim.util.HttpClient;
+import com.longpengz.tencentim.util.RestTemplateHttpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -12,10 +13,13 @@ import org.springframework.util.StringUtils;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+/**
+ * @author longpengZ
+ */
 @Slf4j
 public class AccountServiceImp implements AccountService{
 
-    private final RestTemplateUtil restTemplateUtil=new RestTemplateUtil();
+    private final HttpClient httpClient = new RestTemplateHttpClient();
 
     private final Gson gson = new Gson();
 
@@ -31,7 +35,7 @@ public class AccountServiceImp implements AccountService{
 
     private final String kickUrl = "/kick";
 
-    private final String queryStateUrl = "/querystate";
+    private final String queryStateUrl = "/v4/openim/querystate";
 
     @Override
     public ImResponse accountImport(String baseUrl, String identifier, String nick, String faceUrl) {
@@ -42,7 +46,7 @@ public class AccountServiceImp implements AccountService{
                     .ErrorCode(400)
                     .ErrorInfo("用户名不能为空且长度不超过32字节").build();
         }
-        String body = restTemplateUtil.doPost(baseUrl.replace("?", url + accountImportUrl + "?"),
+        String body = httpClient.doPost(baseUrl.replace("?", url + accountImportUrl + "?"),
                 gson.toJson(ImAccountImportRequest.builder()
                         .Identifier(identifier)
                         .Nick(nick)
@@ -60,7 +64,7 @@ public class AccountServiceImp implements AccountService{
                     .ErrorCode(400)
                     .ErrorInfo("用户名，单个用户名长度不超过32字节，单次最多导入100个用户名，至少添加一个").build();
         }
-        String body = restTemplateUtil.doPost(baseUrl.replace("?", url + multiaccountImportUrl + "?"),
+        String body = httpClient.doPost(baseUrl.replace("?", url + multiaccountImportUrl + "?"),
                 gson.toJson(ImMultiaccountImportRequest.builder().Accounts(accounts).build()));
         log.debug("IM导入多个账号结果："+body);
         return gson.fromJson(body,ImMultiaccountImportResponse.class);
@@ -75,7 +79,7 @@ public class AccountServiceImp implements AccountService{
                     .ErrorCode(400)
                     .ErrorInfo("删除的帐号对象数组，单次请求最多支持100个帐号，至少添加一个").build();
         }
-        String body = restTemplateUtil.doPost(baseUrl.replace("?", url + accountDeleteUrl + "?"),
+        String body = httpClient.doPost(baseUrl.replace("?", url + accountDeleteUrl + "?"),
                 gson.toJson(ImAccountDeleteRequest.builder().DeleteItem(deleteItem).build()));
         log.debug("IM删除账号结果："+body);
         return gson.fromJson(body,ImAccountDeleteResponse.class);
@@ -90,7 +94,7 @@ public class AccountServiceImp implements AccountService{
                     .ErrorCode(400)
                     .ErrorInfo("查询的帐号对象数组，单次请求最多支持100个帐号，至少添加一个").build();
         }
-        String body = restTemplateUtil.doPost(baseUrl.replace("?", url + accountCheckUrl + "?"),
+        String body = httpClient.doPost(baseUrl.replace("?", url + accountCheckUrl + "?"),
                 gson.toJson(ImAccountCheckRequest.builder().CheckItem(checkItem).build()));
         log.debug("IM查询账号结果："+body);
         return gson.fromJson(body,ImAccountCheckResponse.class);
@@ -104,7 +108,7 @@ public class AccountServiceImp implements AccountService{
                     .ErrorCode(400)
                     .ErrorInfo("用户名不能为空").build();
         }
-        String body = restTemplateUtil.doPost(baseUrl.replace("?", url + kickUrl + "?"),
+        String body = httpClient.doPost(baseUrl.replace("?", url + kickUrl + "?"),
                 gson.toJson(ImKickRequest.builder().Identifier(identifier).build()));
         log.debug("IM失效帐号登录态结果："+body);
         return gson.fromJson(body,ImResponse.class);
@@ -122,7 +126,7 @@ public class AccountServiceImp implements AccountService{
         if(ObjectUtils.isEmpty(isNeedDetail)){
             isNeedDetail = 0;
         }
-        String body = restTemplateUtil.doPost(baseUrl.replace("?", url + queryStateUrl + "?"),
+        String body = httpClient.doPost(baseUrl.replace("?", queryStateUrl + "?"),
                 gson.toJson(ImQueryStateRequest.builder()
                         .To_Account(toAccount)
                         .IsNeedDetail(isNeedDetail).build()));

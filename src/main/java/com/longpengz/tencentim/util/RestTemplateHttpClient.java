@@ -3,22 +3,23 @@ package com.longpengz.tencentim.util;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class RestTemplateUtil {
+/**
+ * @author longpengZ
+ */
+public class RestTemplateHttpClient implements HttpClient{
 
     private RestTemplate restTemplate;
 
-    public RestTemplate getRestTemplate() {
-        return restTemplate;
-    }
-
-    public RestTemplateUtil() {
+    public RestTemplateHttpClient() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
         factory.setReadTimeout(3*1000);
         factory.setConnectTimeout(3*1000);
         restTemplate = new RestTemplate(factory);
     }
 
-    public String doPost(String url,String body){
+    @Override
+    public String doPost(String url, String body) {
         return restTemplate.postForEntity(url,body, String.class).getBody();
+
     }
 }

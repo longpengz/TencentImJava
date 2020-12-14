@@ -5,6 +5,10 @@ import com.longpengz.tencentim.bean.response.ImResponse;
 
 import java.util.List;
 
+/**
+ * @author longpengZ
+ * IM账号管理相关接口
+ */
 public interface AccountService {
 
 
