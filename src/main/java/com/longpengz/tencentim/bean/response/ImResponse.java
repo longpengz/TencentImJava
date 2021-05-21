@@ -4,9 +4,10 @@ import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "IM请求返回基础参数")

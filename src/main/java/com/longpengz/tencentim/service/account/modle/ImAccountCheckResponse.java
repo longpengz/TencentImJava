@@ -10,6 +10,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "IM查询账号返回参数")

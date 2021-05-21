@@ -37,51 +37,51 @@ class TencentimApplicationTests {
 
     public static void accountImportTest(ImConfig imConfig){
         AccountService accountService = new AccountServiceImp();
-        ImResponse imResponse = accountService.accountImport(getBaseUrl(imConfig),
-                "00003",
-                null,
-                null);
+//        ImResponse imResponse = accountService.accountImport(getBaseUrl(imConfig),
+//                "00003",
+//                null,
+//                null);
     }
 
     public static void multiaccountImportTest(ImConfig imConfig){
-        AccountService accountService = new AccountServiceImp();
-        List<String> accounts = new ArrayList<>();
-        accounts.add("00004");
-        accounts.add("00005");
-        ImMultiaccountImportResponse imMultiaccountImportResponse = accountService.multiaccountImport(getBaseUrl(imConfig),
-                accounts);
+//        AccountService accountService = new AccountServiceImp();
+//        List<String> accounts = new ArrayList<>();
+//        accounts.add("00004");
+//        accounts.add("00005");
+//        ImMultiaccountImportResponse imMultiaccountImportResponse = accountService.multiaccountImport(getBaseUrl(imConfig),
+//                accounts);
     }
 
     public static void accountDeleteTest(ImConfig imConfig){
-        AccountService accountService = new AccountServiceImp();
-        List<ImAccountDeleteItem> deleteItem = new ArrayList<>();
-        deleteItem.add(ImAccountDeleteItem.builder()
-                .UserID("00005").build());
-        ImAccountDeleteResponse imAccountDeleteResponse = accountService.accountDelete(getBaseUrl(imConfig),
-                deleteItem);
+//        AccountService accountService = new AccountServiceImp();
+//        List<ImAccountDeleteItem> deleteItem = new ArrayList<>();
+//        deleteItem.add(ImAccountDeleteItem.builder()
+//                .UserID("00005").build());
+//        ImAccountDeleteResponse imAccountDeleteResponse = accountService.accountDelete(getBaseUrl(imConfig),
+//                deleteItem);
     }
 
     public static void accountCheckTest(ImConfig imConfig){
-        AccountService accountService = new AccountServiceImp();
-        List<ImAccountCheckItem> checkItem = new ArrayList<>();
-        checkItem.add(ImAccountCheckItem.builder()
-                .UserID("00005").build());
-        ImAccountCheckResponse imAccountCheckResponse = accountService.accountCheck(getBaseUrl(imConfig),
-                checkItem);
+//        AccountService accountService = new AccountServiceImp();
+//        List<ImAccountCheckItem> checkItem = new ArrayList<>();
+//        checkItem.add(ImAccountCheckItem.builder()
+//                .UserID("00005").build());
+//        ImAccountCheckResponse imAccountCheckResponse = accountService.accountCheck(getBaseUrl(imConfig),
+//                checkItem);
     }
 
     public static void kickTest(ImConfig imConfig){
-        AccountService accountService = new AccountServiceImp();
-        ImResponse kick = accountService.kick(getBaseUrl(imConfig),
-                imConfig.getIdentifier());
+//        AccountService accountService = new AccountServiceImp();
+//        ImResponse kick = accountService.kick(getBaseUrl(imConfig),
+//                imConfig.getIdentifier());
     }
 
     public static void queryStateTest(ImConfig imConfig){
-        AccountService accountService = new AccountServiceImp();
-        List<String> toAccount = new ArrayList<>();
-        toAccount.add("00003");
-        ImQueryStateResponse imQueryStateResponse = accountService.queryState(getBaseUrl(imConfig),
-                toAccount, 1);
+//        AccountService accountService = new AccountServiceImp();
+//        List<String> toAccount = new ArrayList<>();
+//        toAccount.add("00003");
+//        ImQueryStateResponse imQueryStateResponse = accountService.queryState(getBaseUrl(imConfig),
+//                toAccount, 1);
     }
 
     static String getBaseUrl(ImConfig imConfig){

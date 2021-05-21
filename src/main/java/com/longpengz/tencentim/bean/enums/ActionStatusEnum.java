@@ -8,5 +8,4 @@ public enum ActionStatusEnum {
     OK,
     // 基础返回参数状态 表示失败
     FAIL
-
 }

@@ -4,6 +4,10 @@ import com.tencentyun.TLSSigAPIv2;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
+import java.util.Random;
 
 @Data
 @Builder
@@ -44,6 +48,42 @@ public class ImConfig {
         this.identifier = identifier;
         this.key = key;
         this.tlsSigAPIv2 = new TLSSigAPIv2(sdkAppId,key);
+    }
+
+    /**
+     * 构建请求基础URL
+     * @author longpengZ
+     */
+    public String getBaseUrl(){
+        refreshUsersig();
+        return domain
+                + "?sdkappid=" + sdkAppId
+                + "&identifier=" + identifier
+                + "&usersig=" + usersig
+                + "&random=" + getRandom()
+                + "&contenttype=json";
+    }
+
+    /**
+     * 刷新密码信息
+     * @author longpengZ
+     */
+    public void refreshUsersig(){
+        if(!StringUtils.hasLength(usersig)
+                || ObjectUtils.isEmpty(usersigExpire)
+                || System.currentTimeMillis() >= usersigExpire){
+            setUsersig(tlsSigAPIv2.genSig(identifier,24*60*60));//1天
+            setUsersigExpire(System.currentTimeMillis() + 23*60*60*1000);
+        }
+    }
+
+    /**
+     * 获取随机数
+     * @author longpengZ
+     */
+    public static Integer getRandom() {
+        Random random = new Random();
+        return random.nextInt(2147483647);
     }
 
 }

@@ -1,5 +1,8 @@
 package com.longpengz.tencentim.util;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,7 +22,11 @@ public class RestTemplateHttpClient implements HttpClient{
 
     @Override
     public String doPost(String url, String body) {
-        return restTemplate.postForEntity(url,body, String.class).getBody();
-
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json;charset=UTF-8");
+        headers.setContentType(type);
+        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+        HttpEntity httpEntity = new HttpEntity<>(body, headers);
+        return restTemplate.postForEntity(url,httpEntity, String.class).getBody();
     }
 }
