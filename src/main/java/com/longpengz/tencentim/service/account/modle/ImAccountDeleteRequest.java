@@ -3,6 +3,7 @@ package com.longpengz.tencentim.service.account.modle;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
