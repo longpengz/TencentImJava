@@ -1,5 +1,6 @@
 package com.longpengz.tencentim.service.account.modle;
 
+import com.longpengz.tencentim.bean.response.ImErrorListItem;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,7 +21,7 @@ public class ImQueryStateResponse extends ImResponse {
     private List<ImQueryStateResultItem> QueryResult;
 
     @ApiModelProperty(value = "状态查询失败的帐号列表，在此列表中的目标帐号，状态查询失败或目标帐号不存在。若状态全部查询成功，则 ErrorList 为空")
-    private List<ImQueryStateErrorItem> ErrorList;
+    private List<ImErrorListItem> ErrorList;
 
 
 }

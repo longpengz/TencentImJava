@@ -1,10 +1,10 @@
 package com.longpengz.tencentim.service.account;
 
 import com.google.gson.Gson;
-import com.longpengz.tencentim.service.BaseService;
-import com.longpengz.tencentim.service.account.modle.*;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.bean.response.ImResponse;
+import com.longpengz.tencentim.service.BaseService;
+import com.longpengz.tencentim.service.account.modle.*;
 import com.longpengz.tencentim.util.HttpClient;
 import com.longpengz.tencentim.util.RestTemplateHttpClient;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,6 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 /**
  * @author longpengZ

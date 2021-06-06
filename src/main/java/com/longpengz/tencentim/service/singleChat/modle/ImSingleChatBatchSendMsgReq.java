@@ -1,7 +1,6 @@
 package com.longpengz.tencentim.service.singleChat.modle;
 
 import com.longpengz.tencentim.bean.modle.MsgBodyItem;
-import com.longpengz.tencentim.bean.modle.MsgContent;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

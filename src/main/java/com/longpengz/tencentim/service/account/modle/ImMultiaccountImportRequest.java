@@ -9,9 +9,10 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(description = "")
+@ApiModel(description = "IM导入多个账号请求参数")
 public class ImMultiaccountImportRequest {
 
     @ApiModelProperty(value = "用户名，单个用户名长度不超过32字节，单次最多导入100个用户名")
     private List<String> Accounts;
+
 }

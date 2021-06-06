@@ -17,12 +17,12 @@ public class SoundMsgContent extends MsgContent {
     private String Url;
 
     @ApiModelProperty(value = "语音数据大小，单位：字节。")
-    private Double Size;
+    private Long Size;
 
     @ApiModelProperty(value = "语音时长，单位：秒。")
-    private Double Second;
+    private Long Second;
 
     @ApiModelProperty(value = "语音下载方式标记。目前 Download_Flag 取值只能为2，表示可通过Url字段值的 URL 地址直接下载语音。")
-    private Double Download_Flag;
+    private Integer Download_Flag;
 
 }

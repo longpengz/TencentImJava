@@ -15,6 +15,10 @@ public enum MsgTypeEnum {
     // 语音消息
     TIMSoundElem,
     // 图像消息
-    TIMImageElem
+    TIMImageElem,
+    // 文件消息
+    TIMFileElem,
+    // 视频消息
+    TIMVideoFileElem,
 
 }
