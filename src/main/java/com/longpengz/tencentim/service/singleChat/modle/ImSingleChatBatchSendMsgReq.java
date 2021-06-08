@@ -25,13 +25,13 @@ public class ImSingleChatBatchSendMsgReq {
     private String From_Account;
     
     @ApiModelProperty(value = "（必填）消息接收方用户 UserID")
-    private List<Integer> To_Account;
+    private List<String> To_Account;
 
     @ApiModelProperty(value = "（必填）消息随机数，后台用于同一秒内的消息去重。请确保该字段填的是随机数")
     private Integer MsgRandom;
     
     @ApiModelProperty(value = "（必填）TIM 消息")
-    private MsgBodyItem msgBodyItem;
+    private List<MsgBodyItem> MsgBody;
 
     @ApiModelProperty(value = "（必填）消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）")
     private String CloudCustomData;

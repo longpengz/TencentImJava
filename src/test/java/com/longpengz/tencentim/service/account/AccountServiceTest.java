@@ -1,5 +1,6 @@
 package com.longpengz.tencentim.service.account;
 
+import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.modle.*;
@@ -42,7 +43,7 @@ class AccountServiceTest {
         assertEquals(accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
                 .Accounts(accounts1).build()).getActionStatus(),ActionStatusEnum.OK);
         accountService.accountDelete(ImAccountDeleteRequest.builder()
-                .DeleteItem(getDeleteItemsByAccounts(accounts1)).build());
+                .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build());
 
         assertEquals(accountService.multiaccountImport(ImMultiaccountImportRequest.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
 
@@ -50,7 +51,7 @@ class AccountServiceTest {
         assertEquals(accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
                 .Accounts(accounts2).build()).getActionStatus(),ActionStatusEnum.FAIL);
         accountService.accountDelete(ImAccountDeleteRequest.builder()
-                .DeleteItem(getDeleteItemsByAccounts(accounts2)).build());
+                .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts2)).build());
 
     }
 
@@ -62,12 +63,6 @@ class AccountServiceTest {
         return accounts;
     }
 
-    List<ImAccountDeleteItem> getDeleteItemsByAccounts(List<String> accounts){
-        List<ImAccountDeleteItem> imAccountDeleteItems = new ArrayList<>();
-        accounts.forEach(it -> imAccountDeleteItems.add(ImAccountDeleteItem.builder().UserID(it).build()));
-        return imAccountDeleteItems;
-    }
-
 
     @Test
     void accountDelete() {
@@ -77,10 +72,10 @@ class AccountServiceTest {
         accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
                 .Accounts(accounts1).build());
         assertEquals(accountService.accountDelete(ImAccountDeleteRequest.builder()
-                .DeleteItem(getDeleteItemsByAccounts(accounts1)).build()).getActionStatus(),ActionStatusEnum.OK);
+                .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build()).getActionStatus(),ActionStatusEnum.OK);
 
         assertEquals(accountService.accountDelete(ImAccountDeleteRequest.builder()
-                .DeleteItem(getDeleteItemsByAccounts(getAccounts(101))).build()).getActionStatus(),ActionStatusEnum.FAIL);
+                .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(getAccounts(101))).build()).getActionStatus(),ActionStatusEnum.FAIL);
 
     }
 
@@ -94,7 +89,7 @@ class AccountServiceTest {
         assertEquals(accountService.accountCheck(ImAccountCheckRequest.builder()
                 .CheckItem(getCheckItemByAccounts(accounts1)).build()).getActionStatus(),ActionStatusEnum.OK);
         accountService.accountDelete(ImAccountDeleteRequest.builder()
-                .DeleteItem(getDeleteItemsByAccounts(accounts1)).build());
+                .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build());
 
         assertEquals(accountService.accountCheck(ImAccountCheckRequest.builder()
                 .CheckItem(getCheckItemByAccounts(getAccounts(101))).build()).getActionStatus(),ActionStatusEnum.FAIL);
@@ -129,7 +124,7 @@ class AccountServiceTest {
         assertEquals(accountService.queryState(ImQueryStateRequest.builder()
                 .To_Account(accounts1).build()).getActionStatus(),ActionStatusEnum.OK);
         accountService.accountDelete(ImAccountDeleteRequest.builder()
-                .DeleteItem(getDeleteItemsByAccounts(accounts1)).build());
+                .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build());
 
         assertEquals(accountService.queryState(ImQueryStateRequest.builder().To_Account(getAccounts(501)).build()).getActionStatus(),ActionStatusEnum.FAIL);
     }

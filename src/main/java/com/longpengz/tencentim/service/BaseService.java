@@ -9,4 +9,5 @@ public class BaseService {
     public void init(ImConfig imConfig){
         this.imConfig = imConfig;
     }
+
 }
