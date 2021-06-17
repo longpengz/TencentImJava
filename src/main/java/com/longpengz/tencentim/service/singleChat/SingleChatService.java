@@ -1,14 +1,11 @@
 package com.longpengz.tencentim.service.singleChat;
 
-import com.longpengz.tencentim.bean.enums.ForbidCallbackControlEnum;
-import com.longpengz.tencentim.bean.modle.MsgBodyItem;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import com.longpengz.tencentim.service.singleChat.modle.*;
 
-import java.util.List;
-
 /**
  * @author longpengZ
+ * IM单聊模块接口
  */
 public interface SingleChatService {
 

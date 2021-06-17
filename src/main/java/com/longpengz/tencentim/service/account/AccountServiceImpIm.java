@@ -3,7 +3,7 @@ package com.longpengz.tencentim.service.account;
 import com.google.gson.Gson;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.BaseService;
+import com.longpengz.tencentim.service.ImBaseService;
 import com.longpengz.tencentim.service.account.modle.*;
 import com.longpengz.tencentim.util.HttpClient;
 import com.longpengz.tencentim.util.RestTemplateHttpClient;
@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
  * @author longpengZ
  */
 @Slf4j
-public class AccountServiceImp extends BaseService implements AccountService {
+public class AccountServiceImpIm extends ImBaseService implements AccountService {
 
     private final HttpClient httpClient = new RestTemplateHttpClient();
 

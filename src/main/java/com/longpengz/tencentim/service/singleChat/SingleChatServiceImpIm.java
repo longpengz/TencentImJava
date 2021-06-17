@@ -2,7 +2,7 @@ package com.longpengz.tencentim.service.singleChat;
 
 import com.google.gson.Gson;
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.BaseService;
+import com.longpengz.tencentim.service.ImBaseService;
 import com.longpengz.tencentim.service.singleChat.modle.*;
 import com.longpengz.tencentim.util.HttpClient;
 import com.longpengz.tencentim.util.RestTemplateHttpClient;
@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author longpengZ
  */
 @Slf4j
-public class SingleChatServiceImp extends BaseService implements SingleChatService {
+public class SingleChatServiceImpIm extends ImBaseService implements SingleChatService {
 
     private final HttpClient httpClient = new RestTemplateHttpClient();
 

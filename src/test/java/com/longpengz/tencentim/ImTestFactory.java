@@ -4,10 +4,14 @@ import com.longpengz.tencentim.bean.enums.MsgTypeEnum;
 import com.longpengz.tencentim.bean.modle.*;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.AccountServiceImp;
+import com.longpengz.tencentim.service.account.AccountServiceImpIm;
 import com.longpengz.tencentim.service.account.modle.ImAccountDeleteItem;
+import com.longpengz.tencentim.service.profile.ProfileService;
+import com.longpengz.tencentim.service.profile.ProfileServiceImpIm;
 import com.longpengz.tencentim.service.singleChat.SingleChatService;
-import com.longpengz.tencentim.service.singleChat.SingleChatServiceImp;
+import com.longpengz.tencentim.service.singleChat.SingleChatServiceImpIm;
+import com.longpengz.tencentim.service.sns.SnsService;
+import com.longpengz.tencentim.service.sns.SnsServiceImpIm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +19,7 @@ import java.util.List;
 public class ImTestFactory {
 
     public static AccountService getAccountService(ImConfig imConfig){
-        AccountServiceImp accountService = new AccountServiceImp();
+        AccountServiceImpIm accountService = new AccountServiceImpIm();
         accountService.init(imConfig);
         return accountService;
     }
@@ -27,7 +31,7 @@ public class ImTestFactory {
     }
 
     public static SingleChatService getSingleChatService(ImConfig imConfig){
-        SingleChatServiceImp singleChatService = new SingleChatServiceImp();
+        SingleChatServiceImpIm singleChatService = new SingleChatServiceImpIm();
         singleChatService.init(imConfig);
         return singleChatService;
     }
@@ -75,6 +79,18 @@ public class ImTestFactory {
                         .FileName("文件名称")
                         .Download_Flag(2).build()).build());
         return msgBodyItems;
+    }
+
+    public static ProfileService getProfileService(ImConfig imConfig){
+        ProfileServiceImpIm profileService = new ProfileServiceImpIm();
+        profileService.init(imConfig);
+        return profileService;
+    }
+
+    public static SnsService getSnsService(ImConfig imConfig){
+        SnsServiceImpIm snsService = new SnsServiceImpIm();
+        snsService.init(imConfig);
+        return snsService;
     }
 
 }

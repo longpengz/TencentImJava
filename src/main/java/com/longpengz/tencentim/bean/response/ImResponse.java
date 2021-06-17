@@ -22,4 +22,7 @@ public class ImResponse {
     @ApiModelProperty(value = "错误码")
     private Integer ErrorCode;
 
+    @ApiModelProperty(value = "详细的客户端展示信息")
+    private String ErrorDisplay;
+
 }

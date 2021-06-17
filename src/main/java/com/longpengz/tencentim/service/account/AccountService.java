@@ -3,8 +3,6 @@ package com.longpengz.tencentim.service.account;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import com.longpengz.tencentim.service.account.modle.*;
 
-import java.util.List;
-
 /**
  * @author longpengZ
  * IM账号管理相关接口
