@@ -20,6 +20,9 @@ public class ImResponseFilter {
     @ApiModelProperty(value = "（选填）成员信息字段过滤器，指定需要获取的成员信息字段")
     private List<MemberInformationFieldEnum> MemberInfoFilter;
 
+    @ApiModelProperty(value = "（选填）成员信息字段过滤器，指定需要获取的成员信息字段")
+    private List<MemberInformationFieldEnum> SelfInfoFilter;
+
     @ApiModelProperty(value = "（选填）该字段用来群组维度的自定义字段过滤器，指定需要获取的群组维度的自定义字段，")
     private List<String> AppDefinedDataFilter_Group;
 

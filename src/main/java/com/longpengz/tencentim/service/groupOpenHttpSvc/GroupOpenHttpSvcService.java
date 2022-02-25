@@ -92,4 +92,54 @@ public interface GroupOpenHttpSvcService {
      * @return ImAddGroupMemberRes
      */
     ImAddGroupMemberRes addGroupMember(ImAddGroupMemberReq imAddGroupMemberReq);
+
+    /**
+     * 删除群成员
+     * App 管理员可以通过该接口删除群成员。
+     * GroupId （必填）操作的群 ID
+     * Silence （选填）是否静默删人。0表示非静默删人，1表示静默删人。静默即删除成员时不通知群里所有成员，只通知被删除群成员。不填写该字段时默认为0
+     * Reason （选填）踢出用户原因
+     * MemberToDel_Account（必填）待删除的群成员
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse deleteGroupMember(ImDeleteGroupMemberReq imDeleteGroupMemberReq);
+
+    /**
+     * 修改群成员资料
+     * App 管理员可以通过该接口修改群成员资料。
+     * GroupId （必填）操作的群 ID
+     * Member_Account （必填）要操作的群成员
+     * Role （选填）成员身份，Admin/Member 分别为设置/取消管理员
+     * MsgFlag （选填）消息屏蔽类型
+     * NameCard （选填）群名片（最大不超过50个字节）
+     * AppMemberDefinedData （选填）群成员维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 群组系统
+     * ShutUpTime （选填）需禁言时间，单位为秒，0表示取消禁言
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse modifyGroupMemberInfo(ImModifyGroupMemberInfoReq imModifyGroupMemberInfoReq);
+
+    /**
+     * 解散群组
+     * App 管理员通过该接口解散群。
+     * GroupId （必填）操作的群 ID
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse destroyGroup(ImDestroyGroupReq imDestroyGroupReq);
+
+    /**
+     * 获取用户所加入的群组
+     * App 管理员可以通过本接口获取某一用户加入的群信息。默认不获取用户已加入但未激活好友工作群（Work）以及直播群（AVChatRoom）群信息。
+     * Member_Account （必填）需要查询的用户帐号
+     * WithHugeGroups （必填）是否获取用户加入的 AVChatRoom(直播群)，0表示不获取，1表示获取。默认为0
+     * WithNoActiveGroups （选填）是否获取用户已加入但未激活的 Private（即新版本中 Work，好友工作群) 群信息，0表示不获取，1表示获取。默认为0
+     * Limit （选填）单次拉取的群组数量，如果不填代表所有群组
+     * Offset （选填）从第多少个群组开始拉取
+     * GroupType （选填）拉取哪种群组类型，例如 Public(陌生人社交群)，Private（即新版本Work，好友工作群)，ChatRoom （即新版本Meeting，会议群），AVChatRoom(直播群)，Community（社群），不填为拉取所有
+     * ResponseFilter （选填）分别包含 GroupBaseInfoFilter 和 SelfInfoFilter 两个过滤器； GroupBaseInfoFilter 表示需要拉取哪些基础信息字段，详情请参阅 群组系统；SelfInfoFilter 表示需要拉取用户在每个群组中的哪些个人资料 。
+     * @author longpengZ
+     */
+    ImGetJoinedGroupListRes getJoinedGroupList(ImGetJoinedGroupListReq imGetJoinedGroupListReq);
 }
