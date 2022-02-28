@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(description = "IM创建修改群组请求参数")
+@ApiModel(description = "IM创建修改导入群组请求参数")
 public class ImCreateGroupReq {
 
     @ApiModelProperty(value = "（创建选填、修改不填）群主 ID，自动添加到群成员中。如果不填，群没有群主")
@@ -46,7 +46,11 @@ public class ImCreateGroupReq {
     @ApiModelProperty(value = "（选填）初始群成员列表，最多500个；成员信息字段详情请参阅 群成员资料")
     private List<ImMemberItem> MemberList;
 
-    @ApiModelProperty(value = "（创建不填、修改选填）群内群成员禁言，只有群管理员和群主以及系统管理员可以发言")
+    @ApiModelProperty(value = "（修改选填）群内群成员禁言，只有群管理员和群主以及系统管理员可以发言")
     private ShutUpAllMemberEnum ShutUpAllMember;
+
+    @ApiModelProperty(value = "（导入选填）群内群成员禁言，只有群管理员和群主以及系统管理员可以发言")
+    private Integer createTime;
+
 
 }

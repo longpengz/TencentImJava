@@ -140,6 +140,123 @@ public interface GroupOpenHttpSvcService {
      * GroupType （选填）拉取哪种群组类型，例如 Public(陌生人社交群)，Private（即新版本Work，好友工作群)，ChatRoom （即新版本Meeting，会议群），AVChatRoom(直播群)，Community（社群），不填为拉取所有
      * ResponseFilter （选填）分别包含 GroupBaseInfoFilter 和 SelfInfoFilter 两个过滤器； GroupBaseInfoFilter 表示需要拉取哪些基础信息字段，详情请参阅 群组系统；SelfInfoFilter 表示需要拉取用户在每个群组中的哪些个人资料 。
      * @author longpengZ
+     * @return ImGetJoinedGroupListRes
      */
     ImGetJoinedGroupListRes getJoinedGroupList(ImGetJoinedGroupListReq imGetJoinedGroupListReq);
+
+    /**
+     * 查询用户在群组中的身份
+     * App 管理员可以通过该接口获取一批用户在群内的身份，即“成员角色”。
+     * GroupId （必填）需要查询的群组 ID
+     * User_Account （必填）表示需要查询的用户帐号，最多支持500个帐号
+     * @author longpengZ
+     * @return ImGetRoleInGroupRes
+     */
+    ImGetRoleInGroupRes getRoleInGroup(ImGetRoleInGroupReq imGetRoleInGroupReq);
+
+    /**
+     * 批量禁言和取消禁言
+     *  1.App 管理员禁止指定群组中某些用户在一段时间内发言。
+     *  2.App 管理员取消对某些用户的禁言。
+     *  3.被禁言用户退出群组之后再进入同一群组，禁言仍然有效。
+     * GroupId （必填）需要查询的群组 ID
+     * Members_Account （必填）需要禁言的用户帐号，最多支持500个帐号
+     * ShutUpTime （必填）需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse forbidSendMsg(ImForbidSendMsgReq imForbidSendMsgReq);
+
+    /**
+     * 获取被禁言群成员列表
+     * App 管理员可以根据群组 ID 获取群组中被禁言的用户列表。
+     * GroupId （必填）需要查询的群组 ID
+     * @author longpengZ
+     * @return ImGetGroupShuttedUinRes
+     */
+    ImGetGroupShuttedUinRes getGroupShuttedUin(ImGetGroupShuttedUinReq imGetGroupShuttedUinReq);
+
+    /**
+     * 在群组中发送普通消息
+     * App 管理员可以通过该接口在群组中发送普通消息。
+     * GroupId （必填）向哪个群组发送消息
+     * Random （必填）无符号32位整数。如果5分钟内两条消息的随机值相同，后一条消息将被当做重复消息而丢弃
+     * MsgPriority	String	选填	消息的优先级
+     * MsgBody （必填）消息体，详细可参阅 消息格式描述
+     * From_Account （选填）消息来源帐号，选填。如果不填写该字段，则默认消息的发送者为调用该接口时使用的 App 管理员帐号。除此之外，App 亦可通过该字段“伪造”消息的发送者，从而实现一些特殊的功能需求。需要注意的是，如果指定该字段，必须要确保字段中的帐号是存在的
+     * OfflinePushInfo （选填）离线推送信息配置，详细可参阅 消息格式描述
+     * ForbidCallbackControl （选填）消息回调禁止开关，只对单条消息有效，ForbidBeforeSendMsgCallback 表示禁止发消息前回调，ForbidAfterSendMsgCallback 表示禁止发消息后回调
+     * OnlineOnlyFlag （选填）1表示消息仅发送在线成员，默认0表示发送所有成员，AVChatRoom(直播群)不支持该参数
+     * SendMsgControl （选填）消息发送权限，NoLastMsg 只对单条消息有效，表示不更新最近联系人会话；NoUnread 不计未读，只对单条消息有效。（如果该消息 OnlineOnlyFlag 设置为1，则不允许使用该字段。）
+     * CloudCustomData （选填）消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
+     * @author longpengZ
+     * @return ImSendGroupMsgRes
+     */
+    ImSendGroupMsgRes sendGroupMsg(ImSendGroupMsgReq imSendGroupMsgReq);
+
+    /**
+     * 在群组中发送系统通知
+     * App 管理员可以通过该接口在群组中发送系统通知。
+     * GroupId （必填）向哪个群组发送系统通知
+     * ToMembers_Account （选填）接收者群成员列表，请填写接收者 UserID，不填或为空表示全员下发
+     * Content （必填）系统通知的内容
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse sendGroupSystemNotification(ImSendGroupSystemNotificationReq imSendGroupSystemNotificationReq);
+
+    /**
+     * 转让群主
+     *  1.App 管理员可以通过该接口将群主身份转移给他人。
+     *  2.没有群主的群，App 管理员可以通过此接口指定他人作为群主。
+     *  3.新群主必须为群内成员。
+     * GroupId （必填）要被转移的群组 ID
+     * NewOwner_Account （必填）新群主 ID
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse changeGroupOwner(ImChangeGroupOwnerReq imChangeGroupOwnerReq);
+
+    /**
+     * 撤回群消息
+     * App 管理员通过该接口撤回指定群组的消息，消息需要在漫游有效期以内。
+     * GroupId （必填）操作的群 ID
+     * MsgSeqList （必填）被撤回的消息 seq 列表，一次请求最多可以撤回10条消息 seq
+     * MsgSeq （必填）请求撤回的消息 seq
+     * @author longpengZ
+     * @return ImGroupMsgRecallRes
+     */
+    ImGroupMsgRecallRes groupMsgRecall(ImGroupMsgRecallReq imGroupMsgRecallReq);
+
+    /**
+     * 导入群基础资料
+     * App 管理员可以通过该接口导入群组，不会触发回调、不会下发通知；当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议导入存量群组数据。
+     * Owner_Account （选填）群主 ID，自动添加到群成员中。如果不填，群没有群主
+     * Type （必填）群组形态
+     * GroupId （选填）为了使得群组 ID 更加简单，便于记忆传播，腾讯云支持 App 在通过 REST API 创建群组时 自定义群组 ID
+     * Name （必填）群名称，最长30字节，使用 UTF-8 编码，1个汉字占3个字节
+     * Introduction （选填）群简介，最长240字节，使用 UTF-8 编码，1个汉字占3个字节
+     * Notification （选填）群公告，最长300字节，使用 UTF-8 编码，1个汉字占3个字节
+     * FaceUrl （选填）群头像 URL，最长100字节
+     * MaxMemberCount （选填）最大群成员数量，缺省时的默认值：私有群是200，公开群是2000，聊天室是6000，音视频聊天室和在线成员广播大群无限制
+     * ApplyJoinOption （选填）申请加群处理方式
+     * AppDefinedData （选填）群组维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置
+     * MemberList （选填）初始群成员列表，最多500个；成员信息字段详情请参阅 群成员资料
+     * createTime （选填）群组的创建时间
+     * @author longpengZ
+     * @return ImCreateGroupRes
+     */
+    ImCreateGroupRes importGroup(ImCreateGroupReq imCreateGroupReq);
+
+    /**
+     * 导入群消息
+     *  1.该 API 接口的作用是导入群组的消息，不会触发回调、不会下发通知。
+     *  2.当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议导入存量群消息数据。
+     * GroupId （必填）要导入消息的群 ID
+     * RecentContactFlag （选填）会话更新识别，为1的时候标识触发会话更新，默认不触发（avchatroom 群不支持）。
+     * MsgList （必填）导入的消息列表
+     * @author longpengZ
+     * @return ImImportGroupMsgRes
+     */
+    ImImportGroupMsgRes importGroupMsg(ImImportGroupMsgReq imImportGroupMsgReq);
 }
