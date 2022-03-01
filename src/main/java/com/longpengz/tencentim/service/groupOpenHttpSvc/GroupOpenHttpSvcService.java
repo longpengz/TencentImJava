@@ -259,4 +259,94 @@ public interface GroupOpenHttpSvcService {
      * @return ImImportGroupMsgRes
      */
     ImImportGroupMsgRes importGroupMsg(ImImportGroupMsgReq imImportGroupMsgReq);
+
+    /**
+     * 导入群成员
+     *  1.该 API 接口的作用是导入群组成员，不会触发回调、不会下发通知。
+     *  2.当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议导入存量群成员数据。
+     * GroupId （必填）操作的群 ID
+     * MemberList （必填）待添加的群成员数组
+     * @author longpengZ
+     * @return ImImportGroupMemberRes
+     */
+    ImImportGroupMemberRes importGroupMember(ImImportGroupMemberReq imImportGroupMemberReq);
+
+    /**
+     * 设置成员未读消息计数
+     *  1.App 管理员使用该接口设置群组成员未读消息数，不会触发回调、不会下发通知。
+     *  2.当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议设置群成员的未读消息计数。
+     * GroupId （必填）操作的群 ID
+     * Member_Account （必填）要操作的群成员
+     * UnreadMsgNum （必填）成员未读消息数
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse setUnreadMsgNum(ImSetUnreadMsgNumReq imSetUnreadMsgNumReq);
+
+    /**
+     * 删除指定用户发送的消息
+     * 该 API 接口的作用是撤回最近1000条消息中指定用户发送的消息。
+     * GroupId （必填）要撤回消息的群 ID
+     * Sender_Account （必填）被撤回消息的发送者 ID
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse deleteGroupMsgBySender(ImDeleteGroupMsgBySenderReq imDeleteGroupMsgBySenderReq);
+
+    /**
+     * 拉取群历史消息
+     * App 管理员可以通过该接口拉取群组的历史消息。
+     * GroupId （必填）要拉取历史消息的群组 ID
+     * ReqMsgNumber （必填）拉取的历史消息的条数，目前一次请求最多返回20条历史消息，所以这里最好小于等于20
+     * ReqMsgSeq （选填）拉取消息的最大 seq
+     * WithRecalledMsg （选填）是否带撤回的消息，填1表明需要拉取撤回后的消息；默认不拉取撤回后的消息
+     * @author longpengZ
+     * @return ImGroupMsgGetSimpleRes
+     */
+    ImGroupMsgGetSimpleRes groupMsgGetSimple(ImGroupMsgGetSimpleReq imGroupMsgGetSimpleReq);
+
+    /**
+     * 获取直播群在线人数
+     * App 管理员可以根据群组 ID 获取直播群在线人数。
+     * GroupId （必填）操作的群 ID
+     * @author longpengZ
+     * @return ImGetOnlineMemberNumRes
+     */
+    ImGetOnlineMemberNumRes getOnlineMemberNum(ImGetOnlineMemberNumReq imGetOnlineMemberNumReq);
+
+    /**
+     * 获取群自定义属性
+     * App 管理员可以通过该接口获取群自定义属性。
+     * GroupId （必填）获取自定义属性的群id
+     * @author longpengZ
+     * @return ImGetGroupAttrRes
+     */
+    ImGetGroupAttrRes getGroupAttr(ImGetGroupAttrReq imGetGroupAttrReq);
+
+    /**
+     * 修改群自定义属性
+     * App 管理员可以通过该接口修改群自定义属性
+     * GroupId （必填）修改自定义属性的群id
+     * GroupAttr （必填）自定义属性列表，key 为自定义属性的键，value 为自定义属性的值
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse modifyGroupAttr(ImModifyGroupAttrReq imModifyGroupAttrReq);
+
+    /**
+     * 清空群自定义属性
+     * App 管理员可以通过该接口清空群自定义属性
+     * GroupId （必填）清空自定义属性的群 id
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse clearGroupAttr(ImClearGroupAttrReq imClearGroupAttrReq);
+
+    /**
+     * 重置群自定义属性
+     * App 管理员可以通过该接口重置群自定义属性
+     * @author longpengZ
+     * @return ImResponse
+     */
+    ImResponse setGroupAttr(ImModifyGroupAttrReq imModifyGroupAttrReq);
 }
