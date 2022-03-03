@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
  */
 public class RestTemplateHttpClient implements HttpClient{
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     public RestTemplateHttpClient() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
@@ -26,7 +26,7 @@ public class RestTemplateHttpClient implements HttpClient{
         MediaType type = MediaType.parseMediaType("application/json;charset=UTF-8");
         headers.setContentType(type);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
-        HttpEntity httpEntity = new HttpEntity<>(body, headers);
+        HttpEntity<String> httpEntity = new HttpEntity<>(body, headers);
         return restTemplate.postForEntity(url,httpEntity, String.class).getBody();
     }
 }

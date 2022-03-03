@@ -8,6 +8,8 @@ import com.longpengz.tencentim.service.account.AccountServiceImpIm;
 import com.longpengz.tencentim.service.account.modle.ImAccountDeleteItem;
 import com.longpengz.tencentim.service.groupOpenHttpSvc.GroupOpenHttpSvcService;
 import com.longpengz.tencentim.service.groupOpenHttpSvc.GroupOpenHttpSvcServiceImpl;
+import com.longpengz.tencentim.service.openconfigsvr.OpenconfigsvrService;
+import com.longpengz.tencentim.service.openconfigsvr.OpenconfigsvrServiceImpl;
 import com.longpengz.tencentim.service.profile.ProfileService;
 import com.longpengz.tencentim.service.profile.ProfileServiceImpIm;
 import com.longpengz.tencentim.service.singleChat.SingleChatService;
@@ -42,6 +44,12 @@ public class ImTestFactory {
         GroupOpenHttpSvcServiceImpl groupOpenHttpSvcService = new GroupOpenHttpSvcServiceImpl();
         groupOpenHttpSvcService.init(imConfig);
         return groupOpenHttpSvcService;
+    }
+
+    public static OpenconfigsvrService getOpenconfigsvrService(ImConfig imConfig){
+        OpenconfigsvrServiceImpl openconfigsvrService = new OpenconfigsvrServiceImpl();
+        openconfigsvrService.init(imConfig);
+        return openconfigsvrService;
     }
 
 

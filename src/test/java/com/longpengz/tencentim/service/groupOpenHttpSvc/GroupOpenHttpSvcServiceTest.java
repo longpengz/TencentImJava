@@ -21,11 +21,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-class GroupOpenHttpSvcServiceImplTest {
+class GroupOpenHttpSvcServiceTest {
 
 
     private static GroupOpenHttpSvcService groupOpenHttpSvcService = null;
-    private static AccountService accountServiceImp = null;
+    private static AccountService accountService = null;
     private static final List<String> accounts = new ArrayList<>();
     private static String groupId = "";
     private static final List<String> groups = new ArrayList<>();
@@ -37,14 +37,24 @@ class GroupOpenHttpSvcServiceImplTest {
         ImConfig imConfig = new ImConfig(1400459926,
                 "administrator",
                 "c1e7f72f98f8c44ec87bf779871e9e34bde51f3f3b84bc41e44ea3ab70c60381");
-        accountServiceImp = ImTestFactory.getAccountService(imConfig);
+        accountService = ImTestFactory.getAccountService(imConfig);
         groupOpenHttpSvcService = ImTestFactory.getGroupOpenHttpSvcService(imConfig);
+    }
+
+    @AfterAll
+    static void end(){
+        accountService.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        if(StringUtils.hasLength(groupId)){
+            groups.add(groupId);
+        }
+        groups.forEach(it -> groupOpenHttpSvcService.destroyGroup(ImDestroyGroupReq.builder().GroupId(it).build()));
+        log.debug("账号管理测试结束");
     }
 
     public String getAccount(){
         if(accounts.size() < 1){
             accounts.add("group_open_http_svc_account_1");
-            accountServiceImp.multiaccountImport(ImMultiaccountImportRequest.builder()
+            accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
                     .Accounts(accounts).build());
         }
         return accounts.get(0);
@@ -53,13 +63,11 @@ class GroupOpenHttpSvcServiceImplTest {
     public List<String> getAccounts(){
         if(accounts.size() < 1){
             accounts.add("group_open_http_svc_account_1");
-            accountServiceImp.multiaccountImport(ImMultiaccountImportRequest.builder()
+            accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
                     .Accounts(accounts).build());
         }
         return accounts;
     }
-
-
 
     public String getGroupId(){
         if(!StringUtils.hasLength(groupId)){
@@ -82,15 +90,7 @@ class GroupOpenHttpSvcServiceImplTest {
                 .MemberList(list).build());
     }
 
-    @AfterAll
-    static void end(){
-        accountServiceImp.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
-        if(StringUtils.hasLength(groupId)){
-            groups.add(groupId);
-        }
-        groups.forEach(it -> groupOpenHttpSvcService.destroyGroup(ImDestroyGroupReq.builder().GroupId(it).build()));
-        log.debug("账号管理测试结束");
-    }
+
 
 
     @Test
