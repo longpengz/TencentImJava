@@ -20,7 +20,7 @@ public class ImForbidSendMsgReq {
     private String GroupId;
 
     @ApiModelProperty(value = "（必填）需要禁言的用户帐号，最多支持500个帐号")
-    private List<String> User_Account;
+    private List<String> Members_Account;
 
     @ApiModelProperty(value = "（必填）需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。")
     private Integer ShutUpTime;

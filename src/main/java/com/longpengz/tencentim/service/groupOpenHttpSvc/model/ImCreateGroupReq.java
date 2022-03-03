@@ -19,7 +19,7 @@ public class ImCreateGroupReq {
     @ApiModelProperty(value = "（创建必填、修改不填）群组形态")
     private GroupTypeEnum Type;
     
-    @ApiModelProperty(value = "（选填）为了使得群组 ID 更加简单，便于记忆传播，腾讯云支持 App 在通过 REST API 创建群组时 自定义群组 ID")
+    @ApiModelProperty(value = "（创建选填、修改必填）为了使得群组 ID 更加简单，便于记忆传播，腾讯云支持 App 在通过 REST API 创建群组时 自定义群组 ID")
     private String GroupId;
     
     @ApiModelProperty(value = "（必填）群名称，最长30字节，使用 UTF-8 编码，1个汉字占3个字节")

@@ -20,8 +20,8 @@ public class ImGroupMsgRecallReq {
     private String GroupId;
 
     @ApiModelProperty(value = "（必填）被撤回的消息 seq 列表，一次请求最多可以撤回10条消息 seq")
-    private List<String> MsgSeqList;
+    private List<ImMsgSeqItem> MsgSeqList;
 
-    @ApiModelProperty(value = "（必填）请求撤回的消息 seq")
-    private Integer MsgSeq;
+
+
 }

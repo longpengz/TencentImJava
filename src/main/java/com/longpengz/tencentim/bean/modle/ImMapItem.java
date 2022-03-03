@@ -15,4 +15,10 @@ public class ImMapItem {
 
     @ApiModelProperty(value = "自定义字段值")
     private String Value;
+
+    @ApiModelProperty(value = "自定义的 Key")
+    private String key;
+
+    @ApiModelProperty(value = "自定义字段值")
+    private String value;
 }

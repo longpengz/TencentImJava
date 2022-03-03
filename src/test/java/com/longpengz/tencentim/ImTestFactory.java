@@ -6,6 +6,8 @@ import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
 import com.longpengz.tencentim.service.account.AccountServiceImpIm;
 import com.longpengz.tencentim.service.account.modle.ImAccountDeleteItem;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.GroupOpenHttpSvcService;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.GroupOpenHttpSvcServiceImpl;
 import com.longpengz.tencentim.service.profile.ProfileService;
 import com.longpengz.tencentim.service.profile.ProfileServiceImpIm;
 import com.longpengz.tencentim.service.singleChat.SingleChatService;
@@ -35,6 +37,13 @@ public class ImTestFactory {
         singleChatService.init(imConfig);
         return singleChatService;
     }
+
+    public static GroupOpenHttpSvcService getGroupOpenHttpSvcService(ImConfig imConfig){
+        GroupOpenHttpSvcServiceImpl groupOpenHttpSvcService = new GroupOpenHttpSvcServiceImpl();
+        groupOpenHttpSvcService.init(imConfig);
+        return groupOpenHttpSvcService;
+    }
+
 
     public static List<MsgBodyItem> getMsgBody(){
         List<MsgBodyItem> msgBodyItems = new ArrayList<>();
@@ -70,7 +79,7 @@ public class ImTestFactory {
                 .MsgContent(ImageMsgContent.builder()
                         .UUID("图像消息")
                         .ImageFormat(1)
-                        .ImageInfoArray(new ArrayList<ImageInfoItem>()).build()).build());
+                        .ImageInfoArray(new ArrayList<>()).build()).build());
         msgBodyItems.add(MsgBodyItem.builder()
                 .MsgType(MsgTypeEnum.TIMFileElem)
                 .MsgContent(FileMsgContent.builder()
