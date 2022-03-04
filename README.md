@@ -62,10 +62,10 @@ public class Demo {
         ImClient imClient = new ImClient();
         long sdkAppId = 11111;
         imClient.init(new ImConfig(new ImConfig(sdkAppId, "Identifier", "key")));
-        imClient.接口.方法;
+        imClient.service.方法;
     }
 }
 ```
 ## 版本说明
-目前是Beta版本，1.0.0之后为正式发布稳定版本。
+目前是Beta版本 0.0.1，1.0.0之后为正式发布稳定版本。
 
