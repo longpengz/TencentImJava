@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.longpengz</groupId>
     <artifactId>tencentim</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>tencentim</name>
-    <description>Quickly integrate Tencent im tools</description>
+    <description>快速集成腾讯IM工具，更方便在项目中使用。Quickly integrate Tencent im tools</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -62,11 +62,6 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-ui</artifactId>
-            <version>${swagger-ui.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -75,13 +70,5 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

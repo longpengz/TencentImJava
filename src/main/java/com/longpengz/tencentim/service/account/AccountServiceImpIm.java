@@ -53,7 +53,7 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + accountImportUrl + "?"),
                 gson.toJson(imAccountImportReq));
-        log.debug("IM导入单个账号结果："+body);
+        log.info("IM导入单个账号结果："+body);
         return gson.fromJson(body,ImResponse.class);
     }
 
@@ -69,7 +69,7 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + multiaccountImportUrl + "?"),
                 gson.toJson(imMultiaccountImportRequest));
-        log.debug("IM导入多个账号结果："+body);
+        log.info("IM导入多个账号结果："+body);
         return gson.fromJson(body, ImMultiAccountImportRes.class);
     }
 
