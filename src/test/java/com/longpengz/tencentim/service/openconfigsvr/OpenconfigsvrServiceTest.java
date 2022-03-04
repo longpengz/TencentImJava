@@ -2,11 +2,14 @@ package com.longpengz.tencentim.service.openconfigsvr;
 
 import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
+import com.longpengz.tencentim.bean.enums.ChatTypeEnum;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
 import com.longpengz.tencentim.service.account.modle.ImAccountDeleteRequest;
 import com.longpengz.tencentim.service.account.modle.ImMultiaccountImportRequest;
 import com.longpengz.tencentim.service.groupOpenHttpSvc.model.ImDestroyGroupReq;
+import com.longpengz.tencentim.service.openconfigsvr.model.ImGetHistoryReq;
+import com.longpengz.tencentim.service.openconfigsvr.model.ImGetappinfoReq;
 import com.longpengz.tencentim.service.openconfigsvr.model.ImGetnospeakingReq;
 import com.longpengz.tencentim.service.openconfigsvr.model.ImSetnospeakingReq;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +41,12 @@ class OpenconfigsvrServiceTest {
         openconfigsvrService = ImTestFactory.getOpenconfigsvrService(imConfig);
     }
 
+    @AfterAll
+    static void end(){
+        accountService.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        log.debug("全局禁言管理测试结束");
+    }
+
     public String getAccount(){
         if(accounts.size() < 1){
             accounts.add("group_open_http_svc_account_1");
@@ -45,12 +54,6 @@ class OpenconfigsvrServiceTest {
                     .Accounts(accounts).build());
         }
         return accounts.get(0);
-    }
-
-    @AfterAll
-    static void end(){
-        accountService.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
-        log.debug("全局禁言管理测试结束");
     }
 
 
@@ -66,5 +69,23 @@ class OpenconfigsvrServiceTest {
     void getnospeaking() {
         assertEquals(openconfigsvrService.getnospeaking(ImGetnospeakingReq.builder()
                 .Get_Account(getAccount()).build()).getActionStatus(), ActionStatusEnum.OK);
+    }
+
+    @Test
+    void getappinfo() {
+        assertEquals(openconfigsvrService.getappinfo(ImGetappinfoReq.builder()
+                .build()).getActionStatus(), ActionStatusEnum.OK);
+    }
+
+    @Test
+    void getHistory() {
+//        assertEquals(openconfigsvrService.getHistory(ImGetHistoryReq.builder()
+//                .ChatType(ChatTypeEnum.C2C)
+//                .MsgTime("2022030321").build()).getActionStatus(), ActionStatusEnum.OK);
+    }
+
+    @Test
+    void getIPList() {
+//        assertEquals(openconfigsvrService.getIPList().getActionStatus(), ActionStatusEnum.OK);
     }
 }
