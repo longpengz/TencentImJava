@@ -1,7 +1,11 @@
 package com.longpengz.tencentim.service.singleChat;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.singleChat.modle.*;
+import com.longpengz.tencentim.service.singleChat.request.*;
+import com.longpengz.tencentim.service.singleChat.response.ImAdminGetroamMsgRes;
+import com.longpengz.tencentim.service.singleChat.response.ImGetC2CUnreadMsgNumRes;
+import com.longpengz.tencentim.service.singleChat.response.ImSingleChatBatchSendMsgRes;
+import com.longpengz.tencentim.service.singleChat.response.ImSingleChatSendMsgRes;
 
 /**
  * @author longpengZ

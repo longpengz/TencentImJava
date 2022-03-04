@@ -1,6 +1,7 @@
-package com.longpengz.tencentim.service.singleChat.modle;
+package com.longpengz.tencentim.service.singleChat.response;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
+import com.longpengz.tencentim.service.singleChat.modle.ImC2CUnreadMsgNumListItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

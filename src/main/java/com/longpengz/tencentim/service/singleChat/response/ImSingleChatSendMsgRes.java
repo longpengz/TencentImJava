@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.singleChat.modle;
+package com.longpengz.tencentim.service.singleChat.response;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
