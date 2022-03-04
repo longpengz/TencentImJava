@@ -4,6 +4,7 @@ import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.modle.*;
+import com.longpengz.tencentim.service.account.request.*;
 import com.longpengz.tencentim.util.Captcha;
 import org.junit.jupiter.api.Test;
 
@@ -27,30 +28,30 @@ class AccountServiceTest {
     @Test
     void accountImport() {
         String uuidNumber = Captcha.getUUIDNumber(32);
-        assertEquals(accountService.accountImport(ImAccountImportRequest.builder()
+        assertEquals(accountService.accountImport(ImAccountImportReq.builder()
                         .Identifier(uuidNumber).build()).getActionStatus(), ActionStatusEnum.OK);
         List<ImAccountDeleteItem> deleteItems = new ArrayList<>();
         deleteItems.add(ImAccountDeleteItem.builder().UserID(uuidNumber).build());
-        accountService.accountDelete(ImAccountDeleteRequest.builder()
+        accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(deleteItems).build());
 
-        assertEquals(accountService.accountImport(ImAccountImportRequest.builder().build()).getActionStatus(), ActionStatusEnum.FAIL);
+        assertEquals(accountService.accountImport(ImAccountImportReq.builder().build()).getActionStatus(), ActionStatusEnum.FAIL);
     }
 
     @Test
     void multiaccountImport() {
         List<String> accounts1 = getAccounts(1);
-        assertEquals(accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+        assertEquals(accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts1).build()).getActionStatus(),ActionStatusEnum.OK);
-        accountService.accountDelete(ImAccountDeleteRequest.builder()
+        accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build());
 
-        assertEquals(accountService.multiaccountImport(ImMultiaccountImportRequest.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
+        assertEquals(accountService.multiaccountImport(ImMultiAccountImportReq.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
 
         List<String> accounts2 = getAccounts(101);
-        assertEquals(accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+        assertEquals(accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts2).build()).getActionStatus(),ActionStatusEnum.FAIL);
-        accountService.accountDelete(ImAccountDeleteRequest.builder()
+        accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts2)).build());
 
     }
@@ -66,32 +67,32 @@ class AccountServiceTest {
 
     @Test
     void accountDelete() {
-        assertEquals(accountService.accountDelete(ImAccountDeleteRequest.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
+        assertEquals(accountService.accountDelete(ImAccountDeleteReq.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
 
         List<String> accounts1 = getAccounts(1);
-        accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+        accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts1).build());
-        assertEquals(accountService.accountDelete(ImAccountDeleteRequest.builder()
+        assertEquals(accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build()).getActionStatus(),ActionStatusEnum.OK);
 
-        assertEquals(accountService.accountDelete(ImAccountDeleteRequest.builder()
+        assertEquals(accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(getAccounts(101))).build()).getActionStatus(),ActionStatusEnum.FAIL);
 
     }
 
     @Test
     void accountCheck() {
-        assertEquals(accountService.accountCheck(ImAccountCheckRequest.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
+        assertEquals(accountService.accountCheck(ImAccountCheckReq.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
 
         List<String> accounts1 = getAccounts(1);
-        accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+        accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts1).build());
-        assertEquals(accountService.accountCheck(ImAccountCheckRequest.builder()
+        assertEquals(accountService.accountCheck(ImAccountCheckReq.builder()
                 .CheckItem(getCheckItemByAccounts(accounts1)).build()).getActionStatus(),ActionStatusEnum.OK);
-        accountService.accountDelete(ImAccountDeleteRequest.builder()
+        accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build());
 
-        assertEquals(accountService.accountCheck(ImAccountCheckRequest.builder()
+        assertEquals(accountService.accountCheck(ImAccountCheckReq.builder()
                 .CheckItem(getCheckItemByAccounts(getAccounts(101))).build()).getActionStatus(),ActionStatusEnum.FAIL);
     }
 
@@ -104,28 +105,28 @@ class AccountServiceTest {
     @Test
     void kick() {
         String uuidNumber = Captcha.getUUIDNumber(32);
-        accountService.accountImport(ImAccountImportRequest.builder()
+        accountService.accountImport(ImAccountImportReq.builder()
                 .Identifier(uuidNumber).build());
         assertEquals(accountService.kick(ImKickRequest.builder().Identifier(uuidNumber).build()).getActionStatus(),ActionStatusEnum.OK);
         assertEquals(accountService.kick(ImKickRequest.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
         List<ImAccountDeleteItem> deleteItems = new ArrayList<>();
         deleteItems.add(ImAccountDeleteItem.builder().UserID(uuidNumber).build());
-        accountService.accountDelete(ImAccountDeleteRequest.builder()
+        accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(deleteItems).build());
     }
 
     @Test
     void queryState() {
-        assertEquals(accountService.queryState(ImQueryStateRequest.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
+        assertEquals(accountService.queryState(ImQueryStateReq.builder().build()).getActionStatus(),ActionStatusEnum.FAIL);
 
         List<String> accounts1 = getAccounts(1);
-        accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+        accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts1).build());
-        assertEquals(accountService.queryState(ImQueryStateRequest.builder()
+        assertEquals(accountService.queryState(ImQueryStateReq.builder()
                 .To_Account(accounts1).build()).getActionStatus(),ActionStatusEnum.OK);
-        accountService.accountDelete(ImAccountDeleteRequest.builder()
+        accountService.accountDelete(ImAccountDeleteReq.builder()
                 .DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts1)).build());
 
-        assertEquals(accountService.queryState(ImQueryStateRequest.builder().To_Account(getAccounts(501)).build()).getActionStatus(),ActionStatusEnum.FAIL);
+        assertEquals(accountService.queryState(ImQueryStateReq.builder().To_Account(getAccounts(501)).build()).getActionStatus(),ActionStatusEnum.FAIL);
     }
 }

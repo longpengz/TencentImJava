@@ -2,13 +2,10 @@ package com.longpengz.tencentim.service.openconfigsvr;
 
 import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
-import com.longpengz.tencentim.bean.enums.ChatTypeEnum;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.modle.ImAccountDeleteRequest;
-import com.longpengz.tencentim.service.account.modle.ImMultiaccountImportRequest;
-import com.longpengz.tencentim.service.groupOpenHttpSvc.model.ImDestroyGroupReq;
-import com.longpengz.tencentim.service.openconfigsvr.model.ImGetHistoryReq;
+import com.longpengz.tencentim.service.account.request.ImAccountDeleteReq;
+import com.longpengz.tencentim.service.account.request.ImMultiAccountImportReq;
 import com.longpengz.tencentim.service.openconfigsvr.model.ImGetappinfoReq;
 import com.longpengz.tencentim.service.openconfigsvr.model.ImGetnospeakingReq;
 import com.longpengz.tencentim.service.openconfigsvr.model.ImSetnospeakingReq;
@@ -16,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,14 +39,14 @@ class OpenconfigsvrServiceTest {
 
     @AfterAll
     static void end(){
-        accountService.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        accountService.accountDelete(ImAccountDeleteReq.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
         log.debug("全局禁言管理测试结束");
     }
 
     public String getAccount(){
         if(accounts.size() < 1){
             accounts.add("group_open_http_svc_account_1");
-            accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+            accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                     .Accounts(accounts).build());
         }
         return accounts.get(0);

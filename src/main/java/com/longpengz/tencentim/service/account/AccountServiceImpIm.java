@@ -5,6 +5,11 @@ import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import com.longpengz.tencentim.service.ImBaseService;
 import com.longpengz.tencentim.service.account.modle.*;
+import com.longpengz.tencentim.service.account.request.*;
+import com.longpengz.tencentim.service.account.response.ImAccountCheckRes;
+import com.longpengz.tencentim.service.account.response.ImAccountDeleteRes;
+import com.longpengz.tencentim.service.account.response.ImMultiAccountImportRes;
+import com.longpengz.tencentim.service.account.response.ImQueryStateRes;
 import com.longpengz.tencentim.util.HttpClient;
 import com.longpengz.tencentim.util.RestTemplateHttpClient;
 import lombok.extern.slf4j.Slf4j;
@@ -38,26 +43,26 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
     private final String queryStateUrl = "/v4/openim/querystate";
 
     @Override
-    public ImResponse accountImport(ImAccountImportRequest imAccountImportRequest) {
-        if(!StringUtils.hasLength(imAccountImportRequest.getIdentifier())
-                || imAccountImportRequest.getIdentifier().getBytes(StandardCharsets.UTF_8).length>32){
+    public ImResponse accountImport(ImAccountImportReq imAccountImportReq) {
+        if(!StringUtils.hasLength(imAccountImportReq.getIdentifier())
+                || imAccountImportReq.getIdentifier().getBytes(StandardCharsets.UTF_8).length>32){
             return ImResponse.builder()
                     .ActionStatus(ActionStatusEnum.FAIL)
                     .ErrorCode(400)
                     .ErrorInfo("用户名不能为空且长度不超过32字节").build();
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + accountImportUrl + "?"),
-                gson.toJson(imAccountImportRequest));
+                gson.toJson(imAccountImportReq));
         log.debug("IM导入单个账号结果："+body);
         return gson.fromJson(body,ImResponse.class);
     }
 
     @Override
-    public ImMultiaccountImportResponse multiaccountImport(ImMultiaccountImportRequest imMultiaccountImportRequest) {
+    public ImMultiAccountImportRes multiaccountImport(ImMultiAccountImportReq imMultiaccountImportRequest) {
         if(ObjectUtils.isEmpty(imMultiaccountImportRequest.getAccounts())
                 || imMultiaccountImportRequest.getAccounts().size() < 1
                 || imMultiaccountImportRequest.getAccounts().size() > 100){
-            return ImMultiaccountImportResponse.builder()
+            return ImMultiAccountImportRes.builder()
                     .ActionStatus(ActionStatusEnum.FAIL)
                     .ErrorCode(400)
                     .ErrorInfo("用户名，单个用户名长度不超过32字节，单次最多导入100个用户名，至少添加一个").build();
@@ -65,39 +70,39 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + multiaccountImportUrl + "?"),
                 gson.toJson(imMultiaccountImportRequest));
         log.debug("IM导入多个账号结果："+body);
-        return gson.fromJson(body,ImMultiaccountImportResponse.class);
+        return gson.fromJson(body, ImMultiAccountImportRes.class);
     }
 
     @Override
-    public ImAccountDeleteResponse accountDelete(ImAccountDeleteRequest imAccountDeleteRequest) {
-        if(ObjectUtils.isEmpty(imAccountDeleteRequest.getDeleteItem())
-                || imAccountDeleteRequest.getDeleteItem().size() < 1
-                || imAccountDeleteRequest.getDeleteItem().size() > 100){
-            return ImAccountDeleteResponse.builder()
+    public ImAccountDeleteRes accountDelete(ImAccountDeleteReq imAccountDeleteReq) {
+        if(ObjectUtils.isEmpty(imAccountDeleteReq.getDeleteItem())
+                || imAccountDeleteReq.getDeleteItem().size() < 1
+                || imAccountDeleteReq.getDeleteItem().size() > 100){
+            return ImAccountDeleteRes.builder()
                     .ActionStatus(ActionStatusEnum.FAIL)
                     .ErrorCode(400)
                     .ErrorInfo("删除的帐号对象数组，单次请求最多支持100个帐号，至少添加一个").build();
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + accountDeleteUrl + "?"),
-                gson.toJson(imAccountDeleteRequest));
+                gson.toJson(imAccountDeleteReq));
         log.debug("IM删除账号结果："+body);
-        return gson.fromJson(body,ImAccountDeleteResponse.class);
+        return gson.fromJson(body, ImAccountDeleteRes.class);
     }
 
     @Override
-    public ImAccountCheckResponse accountCheck(ImAccountCheckRequest imAccountCheckRequest) {
-        if(ObjectUtils.isEmpty(imAccountCheckRequest.getCheckItem())
-                || imAccountCheckRequest.getCheckItem().size() < 1
-                || imAccountCheckRequest.getCheckItem().size() > 100){
-            return ImAccountCheckResponse.builder()
+    public ImAccountCheckRes accountCheck(ImAccountCheckReq imAccountCheckReq) {
+        if(ObjectUtils.isEmpty(imAccountCheckReq.getCheckItem())
+                || imAccountCheckReq.getCheckItem().size() < 1
+                || imAccountCheckReq.getCheckItem().size() > 100){
+            return ImAccountCheckRes.builder()
                     .ActionStatus(ActionStatusEnum.FAIL)
                     .ErrorCode(400)
                     .ErrorInfo("查询的帐号对象数组，单次请求最多支持100个帐号，至少添加一个").build();
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + accountCheckUrl + "?"),
-                gson.toJson(imAccountCheckRequest));
+                gson.toJson(imAccountCheckReq));
         log.debug("IM查询账号结果："+body);
-        return gson.fromJson(body,ImAccountCheckResponse.class);
+        return gson.fromJson(body, ImAccountCheckRes.class);
     }
 
     @Override
@@ -115,22 +120,22 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
     }
 
     @Override
-    public ImQueryStateResponse queryState(ImQueryStateRequest imQueryStateRequest) {
-        if(ObjectUtils.isEmpty(imQueryStateRequest.getTo_Account())
-                || imQueryStateRequest.getTo_Account().size() < 1
-                || imQueryStateRequest.getTo_Account().size() > 500){
-            return ImQueryStateResponse.builder()
+    public ImQueryStateRes queryState(ImQueryStateReq imQueryStateReq) {
+        if(ObjectUtils.isEmpty(imQueryStateReq.getTo_Account())
+                || imQueryStateReq.getTo_Account().size() < 1
+                || imQueryStateReq.getTo_Account().size() > 500){
+            return ImQueryStateRes.builder()
                     .ActionStatus(ActionStatusEnum.FAIL)
                     .ErrorCode(400)
                     .ErrorInfo("需要查询这些 UserID 的登录状态，一次最多查询500个 UserID 的状态，至少添加一个").build();
         }
-        if(ObjectUtils.isEmpty(imQueryStateRequest.getIsNeedDetail())){
-            imQueryStateRequest.setIsNeedDetail(0);
+        if(ObjectUtils.isEmpty(imQueryStateReq.getIsNeedDetail())){
+            imQueryStateReq.setIsNeedDetail(0);
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", queryStateUrl + "?"),
-                gson.toJson(imQueryStateRequest));
+                gson.toJson(imQueryStateReq));
         log.debug("IM查询帐号在线状态结果："+body);
-        return gson.fromJson(body,ImQueryStateResponse.class);
+        return gson.fromJson(body, ImQueryStateRes.class);
     }
 
 

@@ -5,8 +5,8 @@ import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.bean.modle.ImMapItem;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.modle.ImAccountDeleteRequest;
-import com.longpengz.tencentim.service.account.modle.ImMultiaccountImportRequest;
+import com.longpengz.tencentim.service.account.request.ImAccountDeleteReq;
+import com.longpengz.tencentim.service.account.request.ImMultiAccountImportReq;
 import com.longpengz.tencentim.service.groupOpenHttpSvc.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
@@ -43,7 +43,7 @@ class GroupOpenHttpSvcServiceTest {
 
     @AfterAll
     static void end(){
-        accountService.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        accountService.accountDelete(ImAccountDeleteReq.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
         if(StringUtils.hasLength(groupId)){
             groups.add(groupId);
         }
@@ -54,7 +54,7 @@ class GroupOpenHttpSvcServiceTest {
     public String getAccount(){
         if(accounts.size() < 1){
             accounts.add("group_open_http_svc_account_1");
-            accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+            accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                     .Accounts(accounts).build());
         }
         return accounts.get(0);
@@ -63,7 +63,7 @@ class GroupOpenHttpSvcServiceTest {
     public List<String> getAccounts(){
         if(accounts.size() < 1){
             accounts.add("group_open_http_svc_account_1");
-            accountService.multiaccountImport(ImMultiaccountImportRequest.builder()
+            accountService.multiaccountImport(ImMultiAccountImportReq.builder()
                     .Accounts(accounts).build());
         }
         return accounts;

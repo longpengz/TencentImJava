@@ -1,7 +1,8 @@
-package com.longpengz.tencentim.service.account.modle;
+package com.longpengz.tencentim.service.account.response;
 
 import com.longpengz.tencentim.bean.response.ImErrorListItem;
 import com.longpengz.tencentim.bean.response.ImResponse;
+import com.longpengz.tencentim.service.account.modle.ImQueryStateResultItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "IM查询账号在线状态返回参数")
-public class ImQueryStateResponse extends ImResponse {
+public class ImQueryStateRes extends ImResponse {
 
     @ApiModelProperty(value = "返回的用户在线状态结构化信息")
     private List<ImQueryStateResultItem> QueryResult;

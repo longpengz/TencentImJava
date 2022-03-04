@@ -2,12 +2,10 @@ package com.longpengz.tencentim.service.singleChat;
 
 import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
-import com.longpengz.tencentim.bean.enums.MsgTypeEnum;
-import com.longpengz.tencentim.bean.modle.*;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.modle.ImAccountDeleteRequest;
-import com.longpengz.tencentim.service.account.modle.ImMultiaccountImportRequest;
+import com.longpengz.tencentim.service.account.request.ImAccountDeleteReq;
+import com.longpengz.tencentim.service.account.request.ImMultiAccountImportReq;
 import com.longpengz.tencentim.service.singleChat.modle.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
@@ -37,7 +35,7 @@ class SingleChatServiceTest {
         accounts.add("single_account_1");
         accounts.add("single_account_2");
         accounts.add("single_account_3");
-        accountServiceImp.multiaccountImport(ImMultiaccountImportRequest.builder()
+        accountServiceImp.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts).build());
         singleChatService = ImTestFactory.getSingleChatService(imConfig);
 
@@ -45,7 +43,7 @@ class SingleChatServiceTest {
 
     @AfterAll
     static void end(){
-        accountServiceImp.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        accountServiceImp.accountDelete(ImAccountDeleteReq.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
         log.debug("单聊模块测试结束");
     }
 

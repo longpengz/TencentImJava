@@ -2,6 +2,11 @@ package com.longpengz.tencentim.service.account;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
 import com.longpengz.tencentim.service.account.modle.*;
+import com.longpengz.tencentim.service.account.request.*;
+import com.longpengz.tencentim.service.account.response.ImAccountCheckRes;
+import com.longpengz.tencentim.service.account.response.ImAccountDeleteRes;
+import com.longpengz.tencentim.service.account.response.ImMultiAccountImportRes;
+import com.longpengz.tencentim.service.account.response.ImQueryStateRes;
 
 /**
  * @author longpengZ
@@ -19,7 +24,7 @@ public interface AccountService {
      * @author longpengZ
      * @return ImResponse
      */
-    ImResponse accountImport(ImAccountImportRequest imAccountImportRequest);
+    ImResponse accountImport(ImAccountImportReq imAccountImportReq);
 
     /**
      * 导入多个账号：
@@ -28,7 +33,7 @@ public interface AccountService {
      * @author longpengZ
      * @return ImMultiaccountImportResponse
      */
-    ImMultiaccountImportResponse multiaccountImport(ImMultiaccountImportRequest imMultiaccountImportRequest);
+    ImMultiAccountImportRes multiaccountImport(ImMultiAccountImportReq imMultiaccountImportRequest);
 
     /**
      * 删除账号：
@@ -40,7 +45,7 @@ public interface AccountService {
      * @author longpengZ
      * @return ImAccountDeleteResponse
      */
-    ImAccountDeleteResponse accountDelete(ImAccountDeleteRequest imAccountDeleteRequest);
+    ImAccountDeleteRes accountDelete(ImAccountDeleteReq imAccountDeleteReq);
 
     /**
      * 查询帐号：
@@ -49,7 +54,7 @@ public interface AccountService {
      * @author longpengZ
      * @return ImAccountCheckResponse
      */
-    ImAccountCheckResponse accountCheck(ImAccountCheckRequest imAccountCheckRequest);
+    ImAccountCheckRes accountCheck(ImAccountCheckReq imAccountCheckReq);
 
     /**
      * 失效帐号登录态：
@@ -69,6 +74,6 @@ public interface AccountService {
      * 获取用户当前的登录状态
      * @return ImQueryStateResponse
      */
-    ImQueryStateResponse queryState(ImQueryStateRequest imQueryStateRequest);
+    ImQueryStateRes queryState(ImQueryStateReq imQueryStateReq);
 
 }

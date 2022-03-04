@@ -4,10 +4,9 @@ import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.modle.ImAccountDeleteRequest;
-import com.longpengz.tencentim.service.account.modle.ImMultiaccountImportRequest;
+import com.longpengz.tencentim.service.account.request.ImAccountDeleteReq;
+import com.longpengz.tencentim.service.account.request.ImMultiAccountImportReq;
 import com.longpengz.tencentim.service.profile.modle.ProfileItemTagEnum;
-import com.longpengz.tencentim.service.singleChat.SingleChatService;
 import com.longpengz.tencentim.service.sns.modle.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
@@ -17,7 +16,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
@@ -36,7 +34,7 @@ class SnsServiceTest {
         accountServiceImp = ImTestFactory.getAccountService(imConfig);
         accounts.add("sns_account_1");
         accounts.add("sns_account_2");
-        accountServiceImp.multiaccountImport(ImMultiaccountImportRequest.builder()
+        accountServiceImp.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts).build());
         snsService = ImTestFactory.getSnsService(imConfig);
 
@@ -44,7 +42,7 @@ class SnsServiceTest {
 
     @AfterAll
     static void end(){
-        accountServiceImp.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        accountServiceImp.accountDelete(ImAccountDeleteReq.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
         log.debug("关系链测试结束");
     }
 

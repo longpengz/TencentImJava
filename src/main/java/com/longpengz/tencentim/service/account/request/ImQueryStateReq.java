@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.account.modle;
+package com.longpengz.tencentim.service.account.request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "IM查询帐号在线状态请求参数")
-public class ImQueryStateRequest {
+public class ImQueryStateReq {
 
     @ApiModelProperty(value = "需要查询这些 UserID 的登录状态，一次最多查询500个 UserID 的状态")
     private List<String> To_Account;

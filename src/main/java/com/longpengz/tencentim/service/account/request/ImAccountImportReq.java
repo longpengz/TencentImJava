@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.account.modle;
+package com.longpengz.tencentim.service.account.request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "IM导入单个账号请求参数")
-public class ImAccountImportRequest {
+public class ImAccountImportReq {
     
     @ApiModelProperty(value = "用户名，长度不超过32字节（必填）")
     private String Identifier;

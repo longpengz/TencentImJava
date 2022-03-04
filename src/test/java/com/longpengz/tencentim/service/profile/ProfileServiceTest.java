@@ -4,8 +4,8 @@ import com.longpengz.tencentim.ImTestFactory;
 import com.longpengz.tencentim.bean.enums.ActionStatusEnum;
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.modle.ImAccountDeleteRequest;
-import com.longpengz.tencentim.service.account.modle.ImMultiaccountImportRequest;
+import com.longpengz.tencentim.service.account.request.ImAccountDeleteReq;
+import com.longpengz.tencentim.service.account.request.ImMultiAccountImportReq;
 import com.longpengz.tencentim.service.profile.modle.ImPortraitGetReq;
 import com.longpengz.tencentim.service.profile.modle.ImPortraitSetReq;
 import com.longpengz.tencentim.service.profile.modle.ProfileItem;
@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
@@ -37,7 +36,7 @@ class ProfileServiceTest {
                 "c1e7f72f98f8c44ec87bf779871e9e34bde51f3f3b84bc41e44ea3ab70c60381");
         accountServiceImp = ImTestFactory.getAccountService(imConfig);
         accounts.add("profile_1");
-        accountServiceImp.multiaccountImport(ImMultiaccountImportRequest.builder()
+        accountServiceImp.multiaccountImport(ImMultiAccountImportReq.builder()
                 .Accounts(accounts).build());
         profileService = ImTestFactory.getProfileService(imConfig);
 
@@ -45,7 +44,7 @@ class ProfileServiceTest {
 
     @AfterAll
     static void end(){
-        accountServiceImp.accountDelete(ImAccountDeleteRequest.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
+        accountServiceImp.accountDelete(ImAccountDeleteReq.builder().DeleteItem(ImTestFactory.getDeleteItemsByAccounts(accounts)).build());
         log.debug("资料模块测试结束");
     }
 
