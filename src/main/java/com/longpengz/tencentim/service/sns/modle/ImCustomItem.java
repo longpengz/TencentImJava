@@ -1,4 +1,5 @@
 package com.longpengz.tencentim.service.sns.modle;
+import com.longpengz.tencentim.service.sns.enums.CustomItemTagEunm;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

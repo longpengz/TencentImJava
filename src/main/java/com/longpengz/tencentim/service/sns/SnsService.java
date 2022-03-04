@@ -1,7 +1,8 @@
 package com.longpengz.tencentim.service.sns;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.sns.modle.*;
+import com.longpengz.tencentim.service.sns.request.*;
+import com.longpengz.tencentim.service.sns.response.*;
 
 /**
  * @author longpengZ

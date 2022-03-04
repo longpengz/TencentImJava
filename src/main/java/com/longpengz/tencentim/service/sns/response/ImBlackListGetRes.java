@@ -1,6 +1,7 @@
-package com.longpengz.tencentim.service.sns.modle;
+package com.longpengz.tencentim.service.sns.response;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
+import com.longpengz.tencentim.service.sns.modle.ImBlackListItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.sns.modle;
+package com.longpengz.tencentim.service.sns.enums;
 
 import io.swagger.annotations.ApiModel;
 

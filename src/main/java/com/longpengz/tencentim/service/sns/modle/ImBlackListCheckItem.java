@@ -1,5 +1,6 @@
 package com.longpengz.tencentim.service.sns.modle;
 
+import com.longpengz.tencentim.service.sns.enums.BlackRelationEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.sns.modle;
+package com.longpengz.tencentim.service.sns.request;
 import com.longpengz.tencentim.service.profile.enums.ProfileItemTagEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

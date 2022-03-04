@@ -1,9 +1,8 @@
-package com.longpengz.tencentim.service.sns.modle;
+package com.longpengz.tencentim.service.sns.request;
+import com.longpengz.tencentim.service.sns.enums.DeleteFriendTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
-
-import java.util.List;
 
 @Data
 @Builder
