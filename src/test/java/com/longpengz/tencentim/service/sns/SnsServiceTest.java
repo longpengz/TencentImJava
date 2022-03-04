@@ -6,7 +6,7 @@ import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
 import com.longpengz.tencentim.service.account.request.ImAccountDeleteReq;
 import com.longpengz.tencentim.service.account.request.ImMultiAccountImportReq;
-import com.longpengz.tencentim.service.profile.modle.ProfileItemTagEnum;
+import com.longpengz.tencentim.service.profile.enums.ProfileItemTagEnum;
 import com.longpengz.tencentim.service.sns.modle.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;

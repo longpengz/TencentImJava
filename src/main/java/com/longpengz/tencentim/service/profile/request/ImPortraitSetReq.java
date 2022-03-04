@@ -1,4 +1,5 @@
-package com.longpengz.tencentim.service.profile.modle;
+package com.longpengz.tencentim.service.profile.request;
+import com.longpengz.tencentim.service.profile.modle.ProfileItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -16,5 +17,5 @@ public class ImPortraitSetReq {
     private String From_Account;
     
     @ApiModelProperty(value = "待设置的用户的资料对象数组")
-    private List<ProfileItem> ProfileItem;
+    private List<com.longpengz.tencentim.service.profile.modle.ProfileItem> ProfileItem;
 }

@@ -1,13 +1,13 @@
 package com.longpengz.tencentim.service.profile;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.profile.modle.ImPortraitGetReq;
-import com.longpengz.tencentim.service.profile.modle.ImPortraitGetRes;
-import com.longpengz.tencentim.service.profile.modle.ImPortraitSetReq;
+import com.longpengz.tencentim.service.profile.request.ImPortraitGetReq;
+import com.longpengz.tencentim.service.profile.response.ImPortraitGetRes;
+import com.longpengz.tencentim.service.profile.request.ImPortraitSetReq;
 
 /**
  * @author longpengZ
- * IM账号管理相关接口
+ * IM资料管理相关接口
  */
 public interface ProfileService {
 

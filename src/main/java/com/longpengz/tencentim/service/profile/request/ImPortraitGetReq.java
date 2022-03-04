@@ -1,5 +1,6 @@
-package com.longpengz.tencentim.service.profile.modle;
+package com.longpengz.tencentim.service.profile.request;
 
+import com.longpengz.tencentim.service.profile.enums.ProfileItemTagEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

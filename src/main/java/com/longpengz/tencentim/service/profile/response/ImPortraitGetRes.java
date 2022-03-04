@@ -1,6 +1,7 @@
-package com.longpengz.tencentim.service.profile.modle;
+package com.longpengz.tencentim.service.profile.response;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
+import com.longpengz.tencentim.service.profile.modle.UserProfileItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ import java.util.List;
 public class ImPortraitGetRes extends ImResponse {
 
     @ApiModelProperty(value = "返回的用户资料结构化信息")
-    private List<UserProfileItem> UserProfileItem;
+    private List<com.longpengz.tencentim.service.profile.modle.UserProfileItem> UserProfileItem;
 
     @ApiModelProperty(value = "返回处理失败的用户列表，仅当存在失败用户时才返回该字段")
     private List<String> Fail_Account;

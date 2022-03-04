@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.profile.modle;
+package com.longpengz.tencentim.service.profile.enums;
 
 import io.swagger.annotations.ApiModel;
 
