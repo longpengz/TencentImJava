@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.openconfigsvr.model;
+package com.longpengz.tencentim.service.openconfigsvr.response;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
 import io.swagger.annotations.ApiModel;

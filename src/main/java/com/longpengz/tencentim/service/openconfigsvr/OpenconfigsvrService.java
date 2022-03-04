@@ -1,7 +1,14 @@
 package com.longpengz.tencentim.service.openconfigsvr;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.openconfigsvr.model.*;
+import com.longpengz.tencentim.service.openconfigsvr.request.ImGetHistoryReq;
+import com.longpengz.tencentim.service.openconfigsvr.request.ImGetappinfoReq;
+import com.longpengz.tencentim.service.openconfigsvr.request.ImGetnospeakingReq;
+import com.longpengz.tencentim.service.openconfigsvr.request.ImSetnospeakingReq;
+import com.longpengz.tencentim.service.openconfigsvr.response.ImGetHistoryRes;
+import com.longpengz.tencentim.service.openconfigsvr.response.ImGetIPListRes;
+import com.longpengz.tencentim.service.openconfigsvr.response.ImGetappinfoRes;
+import com.longpengz.tencentim.service.openconfigsvr.response.ImGetnospeakingRes;
 
 /**
  * @author longpengZ

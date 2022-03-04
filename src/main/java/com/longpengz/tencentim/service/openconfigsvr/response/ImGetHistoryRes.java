@@ -1,5 +1,6 @@
-package com.longpengz.tencentim.service.openconfigsvr.model;
+package com.longpengz.tencentim.service.openconfigsvr.response;
 
+import com.longpengz.tencentim.bean.modle.ImFileInfo;
 import com.longpengz.tencentim.bean.response.ImResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,16 +11,16 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
-import java.util.Map;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(description = "IM拉取运营数据返回参数")
-public class ImGetappinfoRes extends ImResponse {
+@ApiModel(description = "IM下载最近消息记录返回参数")
+public class ImGetHistoryRes extends ImResponse {
 
-    @ApiModelProperty(value = "请求最近30天的运营数据，字段对应ImOperationFieldEnum信息")
-    private List<Map<String, String>> Result;
+    @ApiModelProperty(value = "消息记录文件下载信息")
+    private List<ImFileInfo> File;
+
 }

@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.openconfigsvr.model;
+package com.longpengz.tencentim.service.openconfigsvr.request;
 import com.longpengz.tencentim.bean.enums.ChatTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

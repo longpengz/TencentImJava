@@ -1,4 +1,4 @@
-package com.longpengz.tencentim.service.openconfigsvr.model;
+package com.longpengz.tencentim.service.openconfigsvr.enums;
 
 import io.swagger.annotations.ApiModel;
 
