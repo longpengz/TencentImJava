@@ -1,11 +1,12 @@
 package com.longpengz.tencentim.service.groupOpenHttpSvc;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
-import com.longpengz.tencentim.service.groupOpenHttpSvc.model.*;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.request.*;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.response.*;
 
 /**
  * @author longpengZ
- * IM账号管理相关接口
+ * IM群组管理相关接口
  */
 public interface GroupOpenHttpSvcService {
 

@@ -1,4 +1,5 @@
 package com.longpengz.tencentim.service.groupOpenHttpSvc.model;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.enums.ImGroupMemberRoleEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

@@ -2,7 +2,8 @@ package com.longpengz.tencentim.service.groupOpenHttpSvc;
 
 import com.longpengz.tencentim.bean.response.ImResponse;
 import com.longpengz.tencentim.service.ImBaseService;
-import com.longpengz.tencentim.service.groupOpenHttpSvc.model.*;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.request.*;
+import com.longpengz.tencentim.service.groupOpenHttpSvc.response.*;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,7 +37,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     private final String deleteGroupMsgBySenderUrl = "/delete_group_msg_by_sender";
     private final String groupMsgGetSimpleUrl = "/group_msg_get_simple";
     private final String getOnlineMemberNumUrl = "/get_online_member_num";
-    private final String getGroupAttrUrl = "/get_group_attr";
+    private final String getGroupAttrUrl = "/v4/group_open_attr_http_svc" + "/get_group_attr";
     private final String modifyGroupAttrUrl = "/modify_group_attr";
     private final String clearGroupAttrUrl = "/clear_group_attr";
     private final String setGroupAttrUrl = "/set_group_attr";
@@ -237,7 +238,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
 
     @Override
     public ImGetGroupAttrRes getGroupAttr(ImGetGroupAttrReq imGetGroupAttrReq) {
-        String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", "/v4/group_open_attr_http_svc" + getGroupAttrUrl + "?"),
+        String body = httpClient.doPost(imConfig.getBaseUrl().replace("?",  getGroupAttrUrl + "?"),
                 gson.toJson(imGetGroupAttrReq));
         log.debug("IM获取群自定义属性结果："+body);
         return gson.fromJson(body, ImGetGroupAttrRes.class);
