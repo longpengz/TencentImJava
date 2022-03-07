@@ -48,7 +48,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetAppidGroupListRes getAppidGroupList(ImGetAppidGroupListReq imGetAppidGroupListReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getAppidGroupListUrl + "?"),
                 gson.toJson(imGetAppidGroupListReq));
-        log.debug("IM获取App中的所有群组结果："+body);
+        log.info("IM获取App中的所有群组结果："+body);
         return gson.fromJson(body, ImGetAppidGroupListRes.class);
     }
 
@@ -56,7 +56,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImCreateGroupRes createGroup(ImCreateGroupReq imCreateGroupReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + createGroupUrl + "?"),
                 gson.toJson(imCreateGroupReq));
-        log.debug("IM创建群组结果："+body);
+        log.info("IM创建群组结果："+body);
         return gson.fromJson(body, ImCreateGroupRes.class);
     }
 
@@ -64,7 +64,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetGroupInfoRes getGroupInfo(ImGetGroupInfoReq imGetGroupInfoReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getGroupInfoUrl + "?"),
                 gson.toJson(imGetGroupInfoReq));
-        log.debug("IM获取群详细资料结果："+body);
+        log.info("IM获取群详细资料结果："+body);
         return gson.fromJson(body, ImGetGroupInfoRes.class);
     }
 
@@ -72,7 +72,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetGroupMemberInfoRes getGroupMemberInfo(ImGetGroupMemberInfoReq imGetGroupMemberInfoReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getGroupMemberInfoUrl + "?"),
                 gson.toJson(imGetGroupMemberInfoReq));
-        log.debug("IM获取群成员详细资料结果："+body);
+        log.info("IM获取群成员详细资料结果："+body);
         return gson.fromJson(body, ImGetGroupMemberInfoRes.class);
     }
 
@@ -80,7 +80,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse modifyGroupBaseInfo(ImCreateGroupReq imCreateGroupReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + modifyGroupBaseInfoUrl + "?"),
                 gson.toJson(imCreateGroupReq));
-        log.debug("IM修改群基础资料结果："+body);
+        log.info("IM修改群基础资料结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -88,7 +88,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImAddGroupMemberRes addGroupMember(ImAddGroupMemberReq imAddGroupMemberReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + addGroupMemberUrl + "?"),
                 gson.toJson(imAddGroupMemberReq));
-        log.debug("IM增加群成员结果："+body);
+        log.info("IM增加群成员结果："+body);
         return gson.fromJson(body, ImAddGroupMemberRes.class);
     }
 
@@ -96,7 +96,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse deleteGroupMember(ImDeleteGroupMemberReq imDeleteGroupMemberReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + deleteGroupMemberUrl + "?"),
                 gson.toJson(imDeleteGroupMemberReq));
-        log.debug("IM删除群成员结果："+body);
+        log.info("IM删除群成员结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -104,7 +104,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse modifyGroupMemberInfo(ImModifyGroupMemberInfoReq imModifyGroupMemberInfoReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + modifyGroupMemberInfoUrl + "?"),
                 gson.toJson(imModifyGroupMemberInfoReq));
-        log.debug("IM修改群成员资料结果："+body);
+        log.info("IM修改群成员资料结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -112,7 +112,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse destroyGroup(ImDestroyGroupReq imDestroyGroupReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + destroyGroupUrl + "?"),
                 gson.toJson(imDestroyGroupReq));
-        log.debug("IM解散群组结果："+body);
+        log.info("IM解散群组结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -120,7 +120,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetJoinedGroupListRes getJoinedGroupList(ImGetJoinedGroupListReq imGetJoinedGroupListReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getJoinedGroupListUrl + "?"),
                 gson.toJson(imGetJoinedGroupListReq));
-        log.debug("IM获取用户所加入的群组结果："+body);
+        log.info("IM获取用户所加入的群组结果："+body);
         return gson.fromJson(body, ImGetJoinedGroupListRes.class);
     }
 
@@ -128,7 +128,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetRoleInGroupRes getRoleInGroup(ImGetRoleInGroupReq imGetRoleInGroupReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getRoleInGroupUrl + "?"),
                 gson.toJson(imGetRoleInGroupReq));
-        log.debug("IM查询用户在群组中的身份结果："+body);
+        log.info("IM查询用户在群组中的身份结果："+body);
         return gson.fromJson(body, ImGetRoleInGroupRes.class);
     }
 
@@ -136,7 +136,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse forbidSendMsg(ImForbidSendMsgReq imForbidSendMsgReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + forbidSendMsgUrl + "?"),
                 gson.toJson(imForbidSendMsgReq));
-        log.debug("IM批量禁言和取消禁言结果："+body);
+        log.info("IM批量禁言和取消禁言结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -144,7 +144,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetGroupShuttedUinRes getGroupShuttedUin(ImGetGroupShuttedUinReq imGetGroupShuttedUinReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getGroupShuttedUinUrl + "?"),
                 gson.toJson(imGetGroupShuttedUinReq));
-        log.debug("IM获取被禁言群成员列表结果："+body);
+        log.info("IM获取被禁言群成员列表结果："+body);
         return gson.fromJson(body, ImGetGroupShuttedUinRes.class);
     }
 
@@ -152,7 +152,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImSendGroupMsgRes sendGroupMsg(ImSendGroupMsgReq imSendGroupMsgReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + sendGroupMsgUrl + "?"),
                 gson.toJson(imSendGroupMsgReq));
-        log.debug("IM在群组中发送普通消息结果："+body);
+        log.info("IM在群组中发送普通消息结果："+body);
         return gson.fromJson(body, ImSendGroupMsgRes.class);
     }
 
@@ -160,7 +160,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse sendGroupSystemNotification(ImSendGroupSystemNotificationReq imSendGroupSystemNotificationReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + sendGroupSystemNotificationUrl + "?"),
                 gson.toJson(imSendGroupSystemNotificationReq));
-        log.debug("IM在群组中发送系统通知结果："+body);
+        log.info("IM在群组中发送系统通知结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -168,7 +168,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse changeGroupOwner(ImChangeGroupOwnerReq imChangeGroupOwnerReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + changeGroupOwnerUrl + "?"),
                 gson.toJson(imChangeGroupOwnerReq));
-        log.debug("IM转让群主结果："+body);
+        log.info("IM转让群主结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -176,7 +176,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGroupMsgRecallRes groupMsgRecall(ImGroupMsgRecallReq imGroupMsgRecallReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + groupMsgRecallUrl + "?"),
                 gson.toJson(imGroupMsgRecallReq));
-        log.debug("IM撤回群消息结果："+body);
+        log.info("IM撤回群消息结果："+body);
         return gson.fromJson(body, ImGroupMsgRecallRes.class);
     }
 
@@ -184,7 +184,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImCreateGroupRes importGroup(ImCreateGroupReq imCreateGroupReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + importGroupUrl + "?"),
                 gson.toJson(imCreateGroupReq));
-        log.debug("IM导入群基础资料结果："+body);
+        log.info("IM导入群基础资料结果："+body);
         return gson.fromJson(body, ImCreateGroupRes.class);
     }
 
@@ -192,7 +192,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImImportGroupMsgRes importGroupMsg(ImImportGroupMsgReq imImportGroupMsgReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + importGroupMsgUrl + "?"),
                 gson.toJson(imImportGroupMsgReq));
-        log.debug("IM导入群消息结果："+body);
+        log.info("IM导入群消息结果："+body);
         return gson.fromJson(body, ImImportGroupMsgRes.class);
     }
 
@@ -200,7 +200,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImImportGroupMemberRes importGroupMember(ImImportGroupMemberReq imImportGroupMemberReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + importGroupMemberUrl + "?"),
                 gson.toJson(imImportGroupMemberReq));
-        log.debug("IM导入群成员结果："+body);
+        log.info("IM导入群成员结果："+body);
         return gson.fromJson(body, ImImportGroupMemberRes.class);
     }
 
@@ -208,7 +208,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse setUnreadMsgNum(ImSetUnreadMsgNumReq imSetUnreadMsgNumReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + setUnreadMsgNumUrl + "?"),
                 gson.toJson(imSetUnreadMsgNumReq));
-        log.debug("IM设置成员未读消息计数结果："+body);
+        log.info("IM设置成员未读消息计数结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -216,7 +216,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse deleteGroupMsgBySender(ImDeleteGroupMsgBySenderReq imDeleteGroupMsgBySenderReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + deleteGroupMsgBySenderUrl + "?"),
                 gson.toJson(imDeleteGroupMsgBySenderReq));
-        log.debug("IM删除指定用户发送的消息结果："+body);
+        log.info("IM删除指定用户发送的消息结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -224,7 +224,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGroupMsgGetSimpleRes groupMsgGetSimple(ImGroupMsgGetSimpleReq imGroupMsgGetSimpleReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + groupMsgGetSimpleUrl + "?"),
                 gson.toJson(imGroupMsgGetSimpleReq));
-        log.debug("IM拉取群历史消息结果："+body);
+        log.info("IM拉取群历史消息结果："+body);
         return gson.fromJson(body, ImGroupMsgGetSimpleRes.class);
     }
 
@@ -232,7 +232,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetOnlineMemberNumRes getOnlineMemberNum(ImGetOnlineMemberNumReq imGetOnlineMemberNumReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getOnlineMemberNumUrl + "?"),
                 gson.toJson(imGetOnlineMemberNumReq));
-        log.debug("IM获取直播群在线人数结果："+body);
+        log.info("IM获取直播群在线人数结果："+body);
         return gson.fromJson(body, ImGetOnlineMemberNumRes.class);
     }
 
@@ -240,7 +240,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImGetGroupAttrRes getGroupAttr(ImGetGroupAttrReq imGetGroupAttrReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?",  getGroupAttrUrl + "?"),
                 gson.toJson(imGetGroupAttrReq));
-        log.debug("IM获取群自定义属性结果："+body);
+        log.info("IM获取群自定义属性结果："+body);
         return gson.fromJson(body, ImGetGroupAttrRes.class);
     }
 
@@ -248,7 +248,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse modifyGroupAttr(ImModifyGroupAttrReq imModifyGroupAttrReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + modifyGroupAttrUrl + "?"),
                 gson.toJson(imModifyGroupAttrReq));
-        log.debug("IM修改群自定义属性结果："+body);
+        log.info("IM修改群自定义属性结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -256,7 +256,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse clearGroupAttr(ImClearGroupAttrReq imClearGroupAttrReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + clearGroupAttrUrl + "?"),
                 gson.toJson(imClearGroupAttrReq));
-        log.debug("IM清空群自定义属性结果："+body);
+        log.info("IM清空群自定义属性结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 
@@ -264,7 +264,7 @@ public class GroupOpenHttpSvcServiceImpl extends ImBaseService implements GroupO
     public ImResponse setGroupAttr(ImModifyGroupAttrReq imModifyGroupAttrReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + setGroupAttrUrl + "?"),
                 gson.toJson(imModifyGroupAttrReq));
-        log.debug("IM重置群自定义属性结果："+body);
+        log.info("IM重置群自定义属性结果："+body);
         return gson.fromJson(body, ImResponse.class);
     }
 }

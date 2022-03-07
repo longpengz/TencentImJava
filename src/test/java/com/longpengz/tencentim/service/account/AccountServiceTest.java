@@ -18,7 +18,7 @@ class AccountServiceTest {
     private final AccountService accountService = getAccountService();
 
     public AccountService getAccountService(){
-        AccountServiceImpIm accountServiceImp = new AccountServiceImpIm();
+        AccountServiceImpl accountServiceImp = new AccountServiceImpl();
         accountServiceImp.init(new ImConfig(1400459926,
                 "administrator",
                 "c1e7f72f98f8c44ec87bf779871e9e34bde51f3f3b84bc41e44ea3ab70c60381"));

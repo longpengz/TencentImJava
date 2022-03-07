@@ -29,7 +29,7 @@ public class OpenconfigsvrServiceImpl extends ImBaseService implements Openconfi
     public ImResponse setnospeaking(ImSetnospeakingReq imSetnospeakingReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + setnospeakingUrl + "?"),
                 gson.toJson(imSetnospeakingReq));
-        log.debug("IM设置全局禁言结果："+body);
+        log.info("IM设置全局禁言结果："+body);
         ImResponse imResponse = gson.fromJson(body, ImResponse.class);
         imResponse.setActionStatus(imResponse.getErrorCode().equals(0) ? ActionStatusEnum.OK:ActionStatusEnum.FAIL);
         return imResponse;
@@ -39,7 +39,7 @@ public class OpenconfigsvrServiceImpl extends ImBaseService implements Openconfi
     public ImGetnospeakingRes getnospeaking(ImGetnospeakingReq imGetnospeakingReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getnospeakingUrl + "?"),
                 gson.toJson(imGetnospeakingReq));
-        log.debug("IM查询全局禁言结果："+body);
+        log.info("IM查询全局禁言结果："+body);
         ImGetnospeakingRes imGetnospeakingRes = gson.fromJson(body, ImGetnospeakingRes.class);
         imGetnospeakingRes.setActionStatus(imGetnospeakingRes.getErrorCode().equals(0) ? ActionStatusEnum.OK:ActionStatusEnum.FAIL);
         return imGetnospeakingRes;
@@ -49,7 +49,7 @@ public class OpenconfigsvrServiceImpl extends ImBaseService implements Openconfi
     public ImGetappinfoRes getappinfo(ImGetappinfoReq imGetappinfoReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + getappinfoUrl + "?"),
                 gson.toJson(imGetappinfoReq));
-        log.debug("IM拉取运营数据结果："+body);
+        log.info("IM拉取运营数据结果："+body);
         ImGetappinfoRes imGetappinfoRes = gson.fromJson(body, ImGetappinfoRes.class);
         imGetappinfoRes.setActionStatus(imGetappinfoRes.getErrorCode().equals(0) ? ActionStatusEnum.OK:ActionStatusEnum.FAIL);
         return imGetappinfoRes;
@@ -59,7 +59,7 @@ public class OpenconfigsvrServiceImpl extends ImBaseService implements Openconfi
     public ImGetHistoryRes getHistory(ImGetHistoryReq imGetHistoryReq) {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", getHistoryUrl + "?"),
                 gson.toJson(imGetHistoryReq));
-        log.debug("IM下载最近消息记录结果："+body);
+        log.info("IM下载最近消息记录结果："+body);
         return gson.fromJson(body, ImGetHistoryRes.class);
     }
 
@@ -67,7 +67,7 @@ public class OpenconfigsvrServiceImpl extends ImBaseService implements Openconfi
     public ImGetIPListRes getIPList() {
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", getIPListUrl + "?"),
                 "");
-        log.debug("IM获取服务器IP地址结果："+body);
+        log.info("IM获取服务器IP地址结果："+body);
         ImGetIPListRes imGetIPListRes = gson.fromJson(body, ImGetIPListRes.class);
         imGetIPListRes.setActionStatus(imGetIPListRes.getErrorCode().equals(0) ? ActionStatusEnum.OK:ActionStatusEnum.FAIL);
         return imGetIPListRes;

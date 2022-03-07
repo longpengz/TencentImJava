@@ -22,24 +22,14 @@ import java.nio.charset.StandardCharsets;
  * @author longpengZ
  */
 @Slf4j
-public class AccountServiceImpIm extends ImBaseService implements AccountService {
-
-    private final HttpClient httpClient = new RestTemplateHttpClient();
-
-    private final Gson gson = new Gson();
+public class AccountServiceImpl extends ImBaseService implements AccountService {
 
     private final String url="/v4/im_open_login_svc";
-
     private final String accountImportUrl = "/account_import";
-
     private final String multiaccountImportUrl = "/multiaccount_import";
-
     private final String accountDeleteUrl = "/account_delete";
-
     private final String accountCheckUrl = "/account_check";
-
     private final String kickUrl = "/kick";
-
     private final String queryStateUrl = "/v4/openim/querystate";
 
     @Override
@@ -85,7 +75,7 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + accountDeleteUrl + "?"),
                 gson.toJson(imAccountDeleteReq));
-        log.debug("IM删除账号结果："+body);
+        log.info("IM删除账号结果："+body);
         return gson.fromJson(body, ImAccountDeleteRes.class);
     }
 
@@ -101,7 +91,7 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + accountCheckUrl + "?"),
                 gson.toJson(imAccountCheckReq));
-        log.debug("IM查询账号结果："+body);
+        log.info("IM查询账号结果："+body);
         return gson.fromJson(body, ImAccountCheckRes.class);
     }
 
@@ -115,7 +105,7 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", url + kickUrl + "?"),
                 gson.toJson(imKickRequest));
-        log.debug("IM失效帐号登录态结果："+body);
+        log.info("IM失效帐号登录态结果："+body);
         return gson.fromJson(body,ImResponse.class);
     }
 
@@ -134,7 +124,7 @@ public class AccountServiceImpIm extends ImBaseService implements AccountService
         }
         String body = httpClient.doPost(imConfig.getBaseUrl().replace("?", queryStateUrl + "?"),
                 gson.toJson(imQueryStateReq));
-        log.debug("IM查询帐号在线状态结果："+body);
+        log.info("IM查询帐号在线状态结果："+body);
         return gson.fromJson(body, ImQueryStateRes.class);
     }
 

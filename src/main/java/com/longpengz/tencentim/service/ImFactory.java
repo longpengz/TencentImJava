@@ -2,27 +2,27 @@ package com.longpengz.tencentim.service;
 
 import com.longpengz.tencentim.config.ImConfig;
 import com.longpengz.tencentim.service.account.AccountService;
-import com.longpengz.tencentim.service.account.AccountServiceImpIm;
+import com.longpengz.tencentim.service.account.AccountServiceImpl;
 import com.longpengz.tencentim.service.groupOpenHttpSvc.GroupOpenHttpSvcService;
 import com.longpengz.tencentim.service.groupOpenHttpSvc.GroupOpenHttpSvcServiceImpl;
 import com.longpengz.tencentim.service.openconfigsvr.OpenconfigsvrService;
 import com.longpengz.tencentim.service.openconfigsvr.OpenconfigsvrServiceImpl;
 import com.longpengz.tencentim.service.profile.ProfileService;
-import com.longpengz.tencentim.service.profile.ProfileServiceImpIm;
+import com.longpengz.tencentim.service.profile.ProfileServiceImpl;
 import com.longpengz.tencentim.service.singleChat.SingleChatService;
-import com.longpengz.tencentim.service.singleChat.SingleChatServiceImpIm;
+import com.longpengz.tencentim.service.singleChat.SingleChatServiceImpl;
 import com.longpengz.tencentim.service.sns.SnsService;
-import com.longpengz.tencentim.service.sns.SnsServiceImpIm;
+import com.longpengz.tencentim.service.sns.SnsServiceImpl;
 
 public class ImFactory {
 
     public static AccountService getAccountService(ImConfig imConfig){
-        AccountServiceImpIm accountService = new AccountServiceImpIm();
+        AccountServiceImpl accountService = new AccountServiceImpl();
         accountService.init(imConfig);
         return accountService;
     }
     public static SingleChatService getSingleChatService(ImConfig imConfig){
-        SingleChatServiceImpIm singleChatService = new SingleChatServiceImpIm();
+        SingleChatServiceImpl singleChatService = new SingleChatServiceImpl();
         singleChatService.init(imConfig);
         return singleChatService;
     }
@@ -40,13 +40,13 @@ public class ImFactory {
     }
 
     public static ProfileService getProfileService(ImConfig imConfig){
-        ProfileServiceImpIm profileService = new ProfileServiceImpIm();
+        ProfileServiceImpl profileService = new ProfileServiceImpl();
         profileService.init(imConfig);
         return profileService;
     }
 
     public static SnsService getSnsService(ImConfig imConfig){
-        SnsServiceImpIm snsService = new SnsServiceImpIm();
+        SnsServiceImpl snsService = new SnsServiceImpl();
         snsService.init(imConfig);
         return snsService;
     }
