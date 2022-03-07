@@ -12,6 +12,8 @@ import com.longpengz.tencentim.service.openconfigsvr.OpenconfigsvrService;
 import com.longpengz.tencentim.service.openconfigsvr.OpenconfigsvrServiceImpl;
 import com.longpengz.tencentim.service.profile.ProfileService;
 import com.longpengz.tencentim.service.profile.ProfileServiceImpIm;
+import com.longpengz.tencentim.service.recentContacts.RecentContactsService;
+import com.longpengz.tencentim.service.recentContacts.RecentContactsServiceImpl;
 import com.longpengz.tencentim.service.singleChat.SingleChatService;
 import com.longpengz.tencentim.service.singleChat.SingleChatServiceImpIm;
 import com.longpengz.tencentim.service.sns.SnsService;
@@ -109,5 +111,12 @@ public class ImTestFactory {
         snsService.init(imConfig);
         return snsService;
     }
+
+    public static RecentContactsService getRecentContactsService(ImConfig imConfig){
+        RecentContactsServiceImpl recentContactsService = new RecentContactsServiceImpl();
+        recentContactsService.init(imConfig);
+        return recentContactsService;
+    }
+
 
 }
