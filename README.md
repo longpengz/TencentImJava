@@ -5,7 +5,7 @@
 功能根据官方文档开发完成。[即时通信IM官方文档地址](https://cloud.tencent.com/document/product/269/1519)
 
 ## 特殊说明
-参数的字段命名根据官方来的，就不要吐槽我了！！
+参数的字段命名根据官方来的
 
 ## 用法
 ### 1.maven 依赖
@@ -67,7 +67,7 @@ public class Demo {
     public static void main(String[] args) {
         ImClient imClient = new ImClient();
         long sdkAppId = 11111;
-        imClient.init(new ImConfig(new ImConfig(sdkAppId, "Identifier", "key")));
+        imClient.init(new ImConfig(sdkAppId, "Identifier", "key"));
         imClient.service.方法;
     }
 }
