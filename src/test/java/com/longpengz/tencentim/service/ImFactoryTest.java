@@ -28,5 +28,7 @@ class ImFactoryTest {
 
     @Test
     void getSnsService() {
+
+
     }
 }
